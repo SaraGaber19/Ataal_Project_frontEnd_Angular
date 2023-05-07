@@ -1,0 +1,42 @@
+.container{
+  border: 0.01rem solid lightgray;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.container > .row{
+  border-bottom: 0.01rem solid lightgray;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.rowTitle{font-weight: bold;}
+
+.firstCol{
+  font-weight: 500;
+  padding-left: 2rem;
+}
+
+.oneSection{
+  text-align: center;
+  width: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: green;
+  border-radius: 10px;
+
+}
+
+.problemTiltle{
+  font-weight: 500;
+}
+
+.review{
+  border: 0.01rem solid lightgray;
+  border-radius: 1rem;
+  padding: 0.5rem;
+
+
+}
+
+

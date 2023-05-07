@@ -1,0 +1,21 @@
+.oneKeyWord{
+  text-align: center;
+  width: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: lightgrey;
+  border-radius: 10px;
+  height: 15px;
+}
+.clickable-div {
+  border: 0.1rem solid #ccc;
+  padding: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.clickable-div:hover {
+  background-color:  rgba(140, 131, 194, 0.341);
+  box-shadow: 0.5rem 0.5rem 0.5rem #ccc;
+}
+

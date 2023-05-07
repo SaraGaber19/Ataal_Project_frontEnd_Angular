@@ -1,0 +1,212 @@
+<section class="container  Design_Probs mt-5  pt-3">
+  <mat-stepper  [linear]="true" labelPosition="bottom" #stepper>
+    <mat-step [completed]='stepOneCompleted'  >
+
+        <ng-template matStepLabel>Choose Section</ng-template>
+
+        <div class="row bord-botom ">
+<div class="col-md-6  d-flex justify-content-center align-items-center">
+<div class="w-75">
+  <h3>choose a suitable section for your problem</h3>
+<p>This helps your  Problem post stand out to the right candidates</p>
+</div>
+</div>
+<div class="col-md-6 d-flex justify-content-center py-4  mt-3 Design">
+  <div>
+  <h4>Choose Section </h4>
+  <mat-chip-listbox aria-label="Fish selection"  [(ngModel)]="selected" >
+    <mat-chip-option [selected]="selected==section.id"   *ngFor="let section of  Sections" [value]="section.id" (click)="submiteFirstStep()"> {{section .name}}</mat-chip-option>
+
+  </mat-chip-listbox>
+</div>
+</div>
+        </div>
+
+        <div class="  py-2   d-flex justify-content-end" >
+          <button [disabled]="!Choosed"   [class]="Choosed?'btnNext px-5 text-white ':'btnNext px-5 '"  mat-button matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+
+    <mat-step [completed]="!Problem.invalid" >
+      <form [formGroup]="Problem" (ngSubmit)="submitProblem()">
+      <ng-template matStepLabel>Problem Details</ng-template>
+
+
+      <div class="row bord-botom ">
+        <div class="col-md-6  d-flex justify-content-center align-items-center">
+        <div class="w-75">
+          <h3>Write a title and Discription for your Problem post</h3>
+        <p>This helps your  Problem post as  It’s the first thing the candidates ’ll see, so make it count!</p>
+        </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center py-4  mt-3 Design">
+          <div>
+
+          <div class="row">
+            <div class="col-md-12">
+                <div class=" m-auto ">
+                  <div><label>Title</label></div>
+                  <div><input formControlName="Title" type="text" class="form-control" /></div>
+                  <div *ngIf=" Problem.controls['Title'].touched&& Problem.controls['Title'].invalid" class="text-danger my-2">
+                    <p *ngIf=" Problem.controls['Title'].errors?.['required']">Title required</p>
+                    <p *ngIf=" Problem.controls['Title'].errors?.['minlength']">Title min length is 20 letter</p>
+                    <p *ngIf=" Problem.controls['Title'].errors?.['maxlength']">Title max length is 100 letter</p>
+                  </div>
+                </div>
+
+                <div class=" m-auto ">
+                  <div><label>Discription</label></div>
+                  <div><textarea formControlName="Description" type="text" class="form-control p-3"></textarea></div>
+                  <div *ngIf=" Problem.controls['Description'].touched&& Problem.controls['Description'].invalid" class="text-danger my-2">
+                    <p *ngIf=" Problem.controls['Description'].errors?.['required']">Description required</p>
+                    <p *ngIf=" Problem.controls['Description'].errors?.['minlength']">Description min length is 100 letter</p>
+                    <p *ngIf=" Problem.controls['Description'].errors?.['maxlength']">Description max length is 300 letter</p>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class=" m-auto ">
+                  <div><label>Choose KeyWord</label></div>
+
+                  <!-- Example single danger button -->
+          <div class="btn-group">
+            <button   formControlName="KeyWord"  type="button" class="btn btn-Des dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
+              KeyWords
+            </button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let keyWord of KeyWords">
+                <a  class="dropdown-item" (click)="selectItem(keyWord?.keywordId)">{{keyWord?.keywordName}}</a>
+              </li>
+
+
+            </ul>
+          </div>
+                </div>
+              </div>
+
+              </div>
+        </div>
+        </div>
+                </div>
+
+
+
+
+     <div class="  py-2   d-flex justify-content-between" >
+      <button  [class]="Choosed?'btnNext px-5 text-white ':'btnNext px-5 text-white '" mat-button matStepperPrevious>Back</button>
+
+
+        <button [disabled]="Problem.invalid"  [class]="!Problem.invalid?'btnNext px-5 text-white ':'btnNext px-5'"  mat-button matStepperNext>Next</button>
+
+      </div>
+</form>
+  </mat-step>
+    <mat-step  [completed]=true optional>
+      <form [formGroup]="File"(ngSubmit)="submitFiles()">
+        <ng-template matStepLabel>Problem Photos</ng-template>
+
+        <div class="row bord-botom ">
+          <div class="col-md-6  d-flex justify-content-center align-items-center">
+          <div class="w-75">
+            <h3>Upload Files Like Images <br>
+               Max Four File</h3>
+          <p>This helps your  Problem post  To be More Clear For The Other</p>
+          </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-center py-4  mt-3 Design">
+            <div>
+
+            <div class="">
+              <div class="mb-3">
+
+                <label for="formFile" class="form-label">Choose Files</label>
+                <input  formControlName="files" class="form-control" type="file" multiple id="formFile" (change)="showPreview($event)">
+               <div class="row my-3">
+                <div class="col-md-2 me-3 "><img alt=""  class="w-100" [src]="imageURL1" /></div>
+                <div class="col-md-2 me-3 "><img alt="" class="w-100" [src]="imageURL2" /></div>
+                <div class="col-md-2 me-3 "><img alt="" class="w-100" [src]="imageURL3" /></div>
+                <div class="col-md-2 me-3 "><img alt="" class="w-100" [src]="imageURL4" /></div>
+
+               </div>
+              </div>
+
+
+
+
+              </div>
+          </div>
+          </div>
+                  </div>
+
+
+
+
+
+                  <div class="  py-2   d-flex justify-content-between" >
+                    <button  [class]="Choosed?'btnNext px-5 text-white ':'btnNext px-5 text-white '" mat-button matStepperPrevious>Back</button>
+
+
+                      <button [disabled]="Problem.invalid"  [class]="!Problem.invalid?'btnNext px-5 text-white ':'btnNext px-5'"  mat-button matStepperNext>Next</button>
+
+                    </div>
+      </form>
+    </mat-step>
+    <mat-step [completed]=true optional="">
+      <ng-template matStepLabel>Done</ng-template>
+
+
+
+      <div class="row bord-botom " *ngIf="!UpdateProbVIP else alerdyVIP">
+        <div class="col-md-6  d-flex justify-content-center align-items-center">
+        <div class="w-75">
+          <h3>You Can Assign Your Problem Post As a VIP </h3>
+        <p>This helps your Problem post To Appear in The Top of Search</p>
+        </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center py-4  mt-3 Design">
+          <div>
+       <div class=" m-auto d-flex mt-2">
+       <div class="me-5 bold"><label>VIP</label></div>
+        <div><mat-slide-toggle  color="#14a803" [(ngModel)]="toggleValue" data-bs-toggle="tooltip" data-bs-placement="bottom" title="You Can Assign the problem as VIP to Appear in the Top of Problems "></mat-slide-toggle></div>
+
+      </div>
+      <!--  -->
+
+      <app-payment [class]="toggleValue?'d-block':'d-none'"  (dataEvent)="handleData($event)"  ></app-payment>
+        </div>
+        </div>
+                </div>
+<ng-template #alerdyVIP>
+
+  <div>
+    <h2>
+      Alerady Assign As VIP
+    </h2>
+  </div>
+</ng-template>
+
+
+                <div class="  py-2   d-flex justify-content-between" >
+                  <!-- <button  [class]="Choosed?' btn btnNext px-5 text-white ':' btn btnNext px-5 text-white '"  (click)="stepper.reset()">Reset</button> -->
+                  <button  class="btnNext px-5 text-white" mat-button matStepperPrevious>Back</button>
+
+                    <button *ngIf="UpdatedProblemId==undefined else update" [disabled]="Problem.invalid"  [class]="!Problem.invalid?' btn btnNext px-5 text-white ':' btn btnNext px-5'" (click)="PostProblem()">Post Your Problem</button>
+<ng-template #update>
+  <button  [disabled]="Problem.invalid"  [class]="!Problem.invalid?' btn btnNext px-5 text-white ':' btn btnNext px-5'" (click)="UpdateProblem()">Update Your Problem</button>
+
+
+</ng-template>
+                  </div>
+      <!-- <div class="mt-5">
+       <button mat-button (click)="stepper.reset()">Reset</button>
+        <button [class]="!toggleValue?'d-block':'d-none'" mat-button (click)="ReturnSection()">No Thanks</button>
+
+
+      </div> -->
+    </mat-step>
+
+  </mat-stepper>
+
+</section>

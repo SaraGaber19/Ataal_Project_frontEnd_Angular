@@ -1,0 +1,67 @@
+<section class="my-3 Design_Details">
+  <div class="container Design_Details Det2 py-3 w-50 mx-auto row  ">
+    <div class="" >
+      <div class="d-flex align-items-center  mt-3 ms-3 ">
+        <img class="rounded-circle me-3" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+       <div>
+        <h6 class="text-dark">sara gaber</h6>
+
+      </div>
+      </div>
+      <div class="my-5 mx-auto  ">
+        <div id="carouselExample" class="carousel slide col-md-12  m-auto  Design_Carso">
+          <div class="carousel-inner d">
+            <div class="carousel-item active  " *ngIf="!Problem.photoPath1&&!Problem.photoPath2&&!Problem.photoPath3&&!Problem.photoPath4">
+              <img src="assets/img/download.png" class="d-block w-100 h-100" alt="...">
+            </div>
+            <div class="carousel-item active  " *ngIf="Problem.photoPath1">
+              <img src="https://localhost:7273/{{Problem.photoPath1}}" class="d-block w-100 h-100" alt="...">
+            </div>
+            <div class="carousel-item" *ngIf="Problem.photoPath2">
+              <img src="https://localhost:7273/{{Problem.photoPath2}}" class="d-block w-100 h-100" alt="...">
+            </div>
+            <div class="carousel-item" *ngIf="Problem.photoPath3">
+              <img src="https://localhost:7273/{{Problem.photoPath3}}" class="d-block w-100 h-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class=" col-md-12 mx-auto my-3 px-4">
+          <div>
+          <h3 class="mb-1 fw-bolder">Title :</h3>
+          <span>{{Problem.title}}</span>
+        </div>
+        <div>
+          <h3 class="mb-1 fw-bolder">
+            Discription :
+          </h3>
+          <p>{{Problem.description}}</p>
+        </div>
+<div class="mt-3">
+  <h5> <i class="fa fa-arrow-circle-left" aria-hidden="true"></i><a routerLink="/SectionCustomer">Go to Back </a></h5>
+</div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+

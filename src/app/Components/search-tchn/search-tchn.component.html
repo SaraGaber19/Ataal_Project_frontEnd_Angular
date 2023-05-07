@@ -1,0 +1,115 @@
+<!-- //*ngIf="FilterResult.length>0 -->
+<div class="container bg-light p-2" >
+  <div class="row" >
+
+    <div class="col-md-3">
+      <h1 class="m-auto text-center">Filter By</h1>
+
+<div class=" mt-5 mb-3 d-flex justify-content-center Design">
+
+ <div>
+  <h4>Technicans Rate <i class="fa-solid fa-chevron-down"></i></h4>
+  <div class="d-flex">
+    <input  type="checkbox" class="filter"  (change)="TOP_RATED_PLUS()"/>
+<label class="ms-2">TOP RATED PLUS</label>
+
+  </div>
+  <div class="d-flex my-2">
+    <input [checked]="filteration"  type="checkbox" (change)="TOP_RATED()" />
+<label class="ms-2">TOP RATED</label>
+
+  </div>
+  <div class="d-flex">
+    <input  type="checkbox" (change)="Other()" />
+<label class="ms-2">Others</label>
+
+  </div>
+ </div>
+
+</div>
+<div class=" mt-5 mb-3 d-flex justify-content-center Design">
+
+  <div>
+   <h4>Technicans Section <i class="fa-solid fa-chevron-down"></i></h4>
+   <div class="d-flex" *ngFor="let sec of AllSection">
+     <input  type="checkbox"  (change)="SectionFilter(sec.id)"/>
+ <label class="ms-2 my-2">{{sec.name}}</label>
+
+   </div>
+
+  </div>
+
+ </div>
+
+
+
+    </div>
+    <div class="col-md-9">
+<div class="card w-75 mx-auto  my-3 " *ngFor="let technican of FinalResult">
+  <div class="card-body">
+    <div class="d-flex align-items-center justify-content-between  ">
+      <div class="d-flex align-items-center">
+      <img class="rounded-circle me-3" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+     <div>
+      <h4 class="text-dark p-0 m-0"><span class="text-black me-3">{{technican.name}}</span>
+
+
+    <i *ngFor="let i of [].constructor(technican.rate); let index = index" class="fa-solid fa-star star "></i>
+
+
+
+      </h4>
+<p class="Design_Add mb-2">{{technican.address}}</p>
+
+      </div>
+
+
+</div>
+
+
+
+        <button class="bg-light p-1" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+
+
+            <a routerLink="/details/{{technican}}">View Profile</a>
+          </button>
+
+          <button mat-menu-item>
+
+            <span  >Block Technican</span>
+
+          </button>
+        </mat-menu>
+    </div>
+
+
+    <div class="ms-3 text-center ">
+      <p>
+        {{technican.breif}}
+      </p>
+    </div>
+    <div class="d-flex">
+    <div class="Section_Tech me-3" *ngFor="let item of technican?.sections">
+<p class="p-1 m-0">{{item.name}}</p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+  </div>
+
+
+</div>
+    </div>
+  </div>
+
+</div>

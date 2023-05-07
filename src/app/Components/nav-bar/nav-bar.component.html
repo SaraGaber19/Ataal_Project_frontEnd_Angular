@@ -1,0 +1,275 @@
+  <!-- Navbar Start -->
+  <nav  *ngIf="!IsLoginTech"  class="navbar navbar-expand bg-light navbar-dark sticky-top px-4 py-0">
+    <!-- /////hossam nav////// -->
+
+
+
+    <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+        <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+    </a>
+    <a href="#"  class="flex-shrink-0">
+        <!-- <i class="fa fa-bars"></i> -->
+        <img alt="" src="assets/img/logo.jpg" width="50px" height="0px">
+    </a>
+    <form *ngIf="IsLogin" class="d-none d-md-flex ms-4">
+        <input  class="form-control  border-0" type="search" placeholder="Search"(keyup.enter)="onSearch()"  [(ngModel)]="query" [ngModelOptions]="{ standalone: true }" />
+    </form>
+
+
+    <div  class="navbar-nav align-items-center ms-auto" >
+
+
+
+      <div class=" bg-secondary border-0 rounded-0 rounded-bottom m-0 d-flex ">
+        <!-- <a [routerLink]="['/FindJob']"  *ngIf='IsLoginTech'  >
+
+          <h4  class="fw-normal mx-3 text-dark Design_Nav my-3">Find Job</h4>
+
+
+        </a>
+        <a [routerLink]="['//MyJob']"  *ngIf='IsLoginTech'  >
+
+          <h4  class="fw-normal mx-3 text-dark Design_Nav my-3">My Jobs</h4>
+
+
+        </a>
+        <a [routerLink]="['/PriceTable']"  *ngIf='IsLoginTech'  >
+
+          <h4  class="fw-normal mx-3 text-dark Design_Nav my-3">Payment</h4>
+
+
+        </a>
+        <a (click)="logout()" *ngIf='IsLoginTech'  >
+
+          <h4   class="fw-normal mx-3 text-dark Design_Nav my-3">LogOut</h4>
+
+
+        </a> -->
+
+
+        <a [routerLink]="['/Register']"  *ngIf='!IsLogin&&!IsLoginTech'  >
+
+            <h4  class="fw-normal mx-3 text-dark Design_Nav my-3">Register</h4>
+
+
+          </a>
+          <a *ngIf='!IsLogin&&!IsLoginTech' routerLink="/Login"  >
+
+            <h4  class="fw-normal mx-4 text-dark Design_Nav my-3" >Login </h4>
+
+
+          </a>
+
+    </div>
+        <div *ngIf="IsLogin"  class="nav-item dropdown">
+            <a *ngIf="IsLogin"   href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <i class="fa-brands fa-creative-commons-nd"></i>
+                <span class="d-none d-lg-inline-flex">All Sections </span>
+            </a>
+            <div  *ngIf="IsLogin" class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                <!-- <a href="#" class="dropdown-item">
+                    <div class="d-flex align-items-center">
+                       <img class="rounded-circle" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;"> -->
+                     <!--   <div class="ms-2">
+                            <h6 class="fw-normal mb-0">My Jobs</h6>
+
+                        </div>
+                    </div>
+                </a> -->
+
+                <a href="#" class="dropdown-item" *ngFor="let section of AllSection"  routerLink="/SectionCustomer/{{section.id}}" routerLinkActive="router-link-active"   routerLinkActive="router-link-active" >
+                    <div class="d-flex align-items-center">
+                        <!-- <img class="rounded-circle" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;"> -->
+                        <div class="ms-2" >
+                          <!-- (click)="SendId(section.id)"  -->
+                         <h3  class="fw-normal mb-0 text-dark  Design_Nav">{{section.name}}<i class="fa-solid fa-arrow-right ms-2"></i></h3>
+                            <!-- <small>15 minutes ago</small> -->
+                        </div>
+                    </div>
+                    <hr class="dropdown-divider">
+                </a>
+
+                <!-- <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item">
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="ms-2">
+                            <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                            <small>15 minutes ago</small>
+                        </div>
+                    </div>
+                </a>-->
+                <!-- <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item text-center">See all message</a> -->
+            </div>
+        </div>
+        <div  *ngIf="IsLogin" (click)="getNotification()" class="nav-item dropdown">
+            <a  href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <i  class="fa fa-bell me-lg-2 notify"><div>
+                  <p *ngIf="notificationNumber>0" class="text-light notficationNum">
+                {{notificationNumber}}
+                  </p>
+                </div></i>
+                <span class="d-none d-lg-inline-flex ">
+
+                  Notificatin</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+              <a *ngFor="let one of notification let i = index"  class="dropdown-item"(click)="handleClick(i)">
+                <div *ngIf="one.customerName" >
+                  <h4 data-bs-toggle="modal" data-bs-target="#DisplayDetails"   class="fw-normal mb-0 text-dark Design_Nav">you have New recommendation</h4>
+                  <small> {{getDate(one.date)}}</small>
+                  </div>
+                  <div *ngIf="one.offerId" >
+                    <h4 data-bs-toggle="modal" data-bs-target="#DisplayDetails"  class="fw-normal mb-0 text-dark Design_Nav">you have New Offer</h4>
+                    <small> {{getDate(one.date)}}</small>
+                    </div>
+
+                </a>
+
+          </div>
+
+
+
+
+
+
+
+
+        </div>
+        <div  *ngIf="IsLogin" class="nav-item dropdown">
+            <a *ngIf="IsLogin"  href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+
+              <img alt="" class="rounded-circle me-lg-2" *ngIf="customerPhoto!=null " src="https://localhost:7273/{{customerPhoto}}"  style="width: 40px; height: 40px;">
+              <ng-template #anotherPhoto>
+               <img alt="" class="rounded-circle me-lg-2" *ngIf="customerPhoto==null" src="https://localhost:7273/avatar.jpg" style="width: 40px; height: 40px;">
+             </ng-template>
+
+                <span class="d-none d-lg-inline-flex">{{customerName}}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                <a routerLink="/ProfileProblems" class="dropdown-item">My Problems</a>
+                <a  routerLink="/Customer_Profile" routerLinkActive="router-link-active"  class="dropdown-item">Settings</a>
+                <a (click)="logout()" class="dropdown-item">Log Out</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<nav *ngIf="IsLoginTech"   class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100  z-in">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="assets\Images\logo3.jpg" class="rounded-circle" height="44"
+        alt="" loading="lazy" /> </a>
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Search -->
+      <form class="me-3">
+        <div class="form-white input-group" style="width: 250px;">
+          <input type="search" class="form-control rounded" placeholder="Search"
+            aria-label="Search" aria-describedby="search-addon"
+            (keyup.enter)="onSearchEnterClick($event)" />
+        </div>
+      </form>
+
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Find Job -->
+        <li class="nav-item">
+          <a class="nav-link hoverWord" routerLinkActive="active"
+            routerLink="/FindJob">Find Job</a>
+        </li>
+        <!-- My Jobs -->
+        <li class="nav-item ">
+          <a class="nav-link hoverWord" routerLinkActive="active"
+            routerLink="/MyJob">My Jobs</a>
+        </li>
+        <!-- All Sections  edite back and front -->
+        <!-- <li class="nav-item me-auto mb-2 mb-lg-0">
+             <div ngbDropdown class="">
+              <a type="button" class=" nav-link hoverWord" id="dropdownBasic1" ngbDropdownToggle>
+                AllSections
+              </a>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <a ngbDropdownItem *ngFor="let section of AllSections"  (click)="FilterProblemsBySection(section.id)"  routerLinkActive="router-link-active">{{section.name}}</a>
+              </div>
+              </div>
+          </li> -->
+        <li class="nav-item ">
+          <a class="nav-link hoverWord" routerLinkActive="active"
+            routerLink="/PriceTable">Payment</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li>
+          <a (click)="logout()" class="dropdown-item">Log Out</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav d-flex flex-row ms-auto me-1">
+        <!-- Profile Image -->
+        <li class="nav-item me-3 me-lg-0 dropdown">
+          <a class="nav-link" routerLink="/TechnicalProfile"
+            id="navbarDropdown1" role="button" data-mdb-toggle="dropdown"
+            aria-expanded="false">
+            <img [src]="'https://localhost:7273/image/' + Technical.photo"
+              class="rounded-circle" height="33"
+              alt="" loading="lazy" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Navbar End -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="DisplayDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title  text-dark fs-5" id="exampleModalLabel" *ngIf="Recom">Recommendition Details</h1>
+        <h1 class="modal-title text-dark fs-5" id="exampleModalLabel" *ngIf="!Recom">Offer Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+      <div *ngIf=" Recom ; else OfferDiv">
+     <span class="fw-bolder">{{currentData.customerName}}</span> Recommend <span class="fw-bolder">{{currentData.technicalName}}</span> To help you to Solve your problem with Title <a class="Title" routerLink="/ProfileProblems"  >"{{currentData.problem_Title}}"</a>
+      </div>
+    <ng-template #OfferDiv >
+
+      <p>
+        you have New Offer from <span class="fw-bolder"> <a class="Title" routerLink="/ProfileProblems">{{currentData?.technicalName}}</a></span><br>
+         he say <span class="fw-bolder"> "{{offer?.offerMassege}}" </span>for your problem with Title<br>
+
+          <a class="Title" routerLink="/ProfileProblems"  >"{{currentData?.problem_Title}}"</a><br>
+       Fee: <span class="fw-bolder"> "{{offer?.offerSalary}} $" </span><br>
+
+
+
+      </p>
+    </ng-template>
+<div class=" alert alert-danger" *ngIf="added">
+<p>You Accept The Offer Succesfully</p>
+</div>
+
+
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button [disabled]="offer?.acepted"  *ngIf="!Recom" type="button" class="btn btn-primary" (click)="AcceptOffer()">Accept Offer</button>
+        <!-- // ishould check if the offer is accepted no and  show this btn or no -->
+      </div>
+    </div>
+  </div>
+</div>
+

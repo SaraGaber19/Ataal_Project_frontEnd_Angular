@@ -1,0 +1,126 @@
+
+<div class="my-5  w-50 m-auto ">
+  <h2>Register Technican Form </h2>
+  <form [formGroup]="Register" (ngSubmit)="submitRegister()">
+    <div class="row">
+      <div class="col-md-5">
+        <div class=" m-auto ">
+          <div><label>First Name</label></div>
+          <div><input formControlName="firstName" type="text" class="form-control" /></div>
+          <div *ngIf="Register.controls['firstName'].touched&&Register.controls['firstName'].invalid" class="text-danger my-2">
+            <p *ngIf="Register.controls['firstName'].errors?.['required']">First Name required</p>
+            <p *ngIf="Register.controls['firstName'].errors?.['minlength']">First Name min length is 3 letter</p>
+            <p *ngIf="Register.controls['firstName'].errors?.['maxlength']">First Name max length is 10 letter</p>
+          </div>
+        </div>
+        <div class=" m-auto ">
+          <div><label>Last Name</label></div>
+          <div><input formControlName="lastName" type="text" class="form-control" /></div>
+          <div class="text-danger my-2">
+            <div *ngIf="Register.controls['lastName'].touched&&Register.controls['lastName'].invalid" class="text-danger my-2">
+              <p *ngIf="Register.controls['lastName'].errors?.['required']">Last Name required</p>
+              <p *ngIf="Register.controls['lastName'].errors?.['minlength']">Last Name min length is 3 letter</p>
+              <p *ngIf="Register.controls['lastName'].errors?.['maxlength']">Last Name max length is 10 letter</p>
+            </div>
+          </div>
+        </div>
+        <div class=" m-auto ">
+          <div><label>phone</label></div>
+          <div><input formControlName="phone" type="text" class="form-control" /></div>
+          <div class="text-danger my-2">
+            <div *ngIf="Register.controls['phone'].touched&&Register.controls['phone'].invalid" class="text-danger my-2">
+              <p *ngIf="Register.controls['phone'].errors?.['required']">phone required</p>
+
+            </div>
+          </div>
+        </div>
+        <div class=" m-auto ">
+          <div><label>Address</label></div>
+          <div><input formControlName="address" type="text" class="form-control" /></div>
+          <div class="text-danger my-2">
+            <div class="text-danger my-2">
+              <div *ngIf="Register.controls['address'].touched&&Register.controls['address'].invalid" class="text-danger my-2">
+                <p *ngIf="Register.controls['address'].errors?.['required']">Address required</p>
+                <p *ngIf="Register.controls['address'].errors?.['minlength']">Address min length is 10 letter</p>
+                <p *ngIf="Register.controls['address'].errors?.['maxlength']">Address max length is 100 letter</p>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-5">
+      <div class=" m-auto ">
+        <div><label>user Name</label></div>
+        <div><input formControlName="userName" type="text" class="form-control" /></div>
+        <div class="text-danger my-2">
+          <div *ngIf="Register.controls['userName'].touched&&Register.controls['userName'].invalid" class="text-danger my-2">
+            <p *ngIf="Register.controls['userName'].errors?.['required']">user Name required</p>
+            <p *ngIf="Register.controls['userName'].errors?.['minlength']">user Name min length is 10 letter</p>
+            <p *ngIf="Register.controls['userName'].errors?.['maxlength']">user Name max length is 100 letter</p>
+          </div>
+        </div>
+      </div>
+      <div class=" m-auto ">
+        <div><label>Email</label></div>
+        <div><input formControlName="email" type="text" class="form-control" /></div>
+        <div class="text-danger my-2"*ngIf="Register.controls['email'].touched&&Register.controls['email'].invalid"><p>Email Not Valid</p></div>
+      </div>
+      <div class=" m-auto ">
+        <div><label>Password</label></div>
+        <div><input formControlName="password" type="password" class="form-control" /></div>
+        <div class="text-danger my-2"*ngIf="Register.controls['password'].touched&&Register.controls['password'].invalid"><p>Password Not Valid</p></div>
+      </div>
+    </div>
+    </div>
+
+
+    <button [disabled]="Register.invalid" class="btn btn-info" type="submit">Submite</button>
+</form>
+
+</div>
+
+
+
+
+
+<!-- <div class="my-5  w-50 m-auto ">
+  <h2>Register Form </h2>
+  <form [formGroup]="Register" (ngSubmit)="submitRegister()">
+
+        <div class=" m-auto ">
+          <div><label>First Name</label></div>
+          <div><input formControlName="firstName" type="text" class="form-control" /></div>
+          <div *ngIf="Register.controls['firstName'].touched&&Register.controls['firstName'].invalid" class="text-danger my-2">
+            <p *ngIf="Register.controls['firstName'].errors?.['required']">First Name required</p>
+            <p *ngIf="Register.controls['firstName'].errors?.['minlength']">First Name min length is 3 letter</p>
+            <p *ngIf="Register.controls['firstName'].errors?.['maxlength']">First Name max length is 10 letter</p>
+          </div>
+        </div>
+        <div class=" m-auto ">
+          <div><label>Last Name</label></div>
+          <div><input formControlName="lastName" type="text" class="form-control" /></div>
+          <div class="text-danger my-2">
+            <div *ngIf="Register.controls['lastName'].touched&&Register.controls['lastName'].invalid" class="text-danger my-2">
+              <p *ngIf="Register.controls['lastName'].errors?.['required']">Last Name required</p>
+              <p *ngIf="Register.controls['lastName'].errors?.['minlength']">Last Name min length is 3 letter</p>
+              <p *ngIf="Register.controls['lastName'].errors?.['maxlength']">Last Name max length is 10 letter</p>
+            </div>
+          </div>
+        </div>
+        <div class=" m-auto ">
+          <div><label>phone</label></div>
+          <div><input formControlName="phone" type="text" class="form-control" /></div>
+          <div class="text-danger my-2">
+            <div *ngIf="Register.controls['phone'].touched&&Register.controls['phone'].invalid" class="text-danger my-2">
+              <p *ngIf="Register.controls['phone'].errors?.['required']">phone required</p>
+
+            </div>
+          </div>
+        </div>
+
+    <button [disabled]="Register.invalid" class="btn btn-info" type="submit">Submite</button>
+</form>
+
+</div> -->
+

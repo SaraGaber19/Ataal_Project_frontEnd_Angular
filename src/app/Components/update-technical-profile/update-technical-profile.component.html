@@ -1,0 +1,155 @@
+<div class="container my-5">
+  <div class="row">
+      <div class="col-md-10 mx-auto">
+          <form  [formGroup]="myForm" (ngSubmit)="UpdateBtn()">
+              <h2 class="text-center mb-4">Update Your Information</h2>
+              <div class="row">
+
+              <div class="col-6">
+                  <!-- firstName -->
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" formControlName="firstName"  class="form-control" id="firstName" name="firstName" >
+                   <!-- Validate FirstName -->
+                   <div *ngIf="myForm.controls['firstName'].touched&&myForm.controls['firstName'].invalid" class="text-danger my-2">
+                    <small *ngIf="myForm.controls['firstName'].errors?.['minlength']">First Name min length is 2 letter</small>
+                    <small *ngIf="myForm.controls['firstName'].errors?.['maxlength']">First Name max length is 20 letter</small>
+                  </div>
+                </div>
+
+                <!-- LastName -->
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" id="lastName" name="lastName"  formControlName="lastName">
+                    <!-- Validate LastName -->
+                   <div *ngIf="myForm.controls['lastName'].touched&&myForm.controls['lastName'].invalid" class="text-danger my-2">
+                    <small *ngIf="myForm.controls['lastName'].errors?.['minlength']">Last Name min length is 2 letter</small>
+                    <small *ngIf="myForm.controls['lastName'].errors?.['maxlength']">Last Name max length is 20 letter</small>
+                  </div>
+                </div>
+                <!-- Phone -->
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input  type="text" formControlName="phone" class="form-control" id="phone" name="phone" >
+                    <!-- Validate Phone -->
+                    <div *ngIf="myForm.controls['phone'].touched&&myForm.controls['phone'].invalid" class="text-danger my-2">
+                      <small *ngIf="myForm.controls['phone'].errors?.['pattern']">Phone must be an egyptain number</small>
+                    </div>
+                  </div>
+                <!-- Email -->
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input    type="email" formControlName="email" class="form-control" id="email" name="email" >
+                  <div *ngIf="myForm.controls['email'].touched&&myForm.controls['email'].invalid" class="text-danger my-2">
+
+                  <small *ngIf="myForm.controls['email'].errors?.['email']">Invalid Email</small>
+                  </div>
+                </div>
+                <!-- Breif -->
+                <div class="form-group">
+                    <label for="brief">Brief</label>
+                    <textarea class="form-control "  id="brief" name="brief" rows="3">
+
+                    </textarea>
+                </div>
+              </div>
+
+
+              <div class="col-6">
+
+                <!-- Image -->
+                <div class="row">
+                  <div class="col-6">
+                    <div class=" form-group circle">
+                      <img alt="" id="uploaded-photo" src="data:image/jpeg;base64,{{base64String}}" >
+                      <button class="btn btn-danger remove-photo">Remove Photo</button>
+
+                    </div>
+                  <div class="col-6 mt-2">
+                    <div style="display: flex;">
+                      <input type="file"   id="photo" name="photo" (change)="onFileSelected($event)">
+                      <!-- Cancel Chosen Photo -->
+                      <!-- <button>
+                      <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                      </svg>
+                    </button> -->
+                    </div>
+                  </div>
+
+                  </div>
+                </div>
+
+                <!-- address -->
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" formControlName="address" class="form-control" s id="address" name="address">
+                    <!-- Validate Address -->
+                    <div *ngIf="myForm.controls['address'].touched&&myForm.controls['address'].invalid" class="text-danger my-2">
+                      <small *ngIf="myForm.controls['address'].errors?.['minlength']">Address min length is 3 letter</small>
+                      <small *ngIf="myForm.controls['address'].errors?.['maxlength']">Address max length is 100 letter</small>
+                    </div>
+                  </div>
+
+
+                <!-- Sections -->
+                <div class="form-group">
+                  <label for="section" >Sections</label>
+                  <div class="d-flex flex flex-wrap allSectionsDisplay">
+                    <div class="oneSection m-1" *ngFor="let section of Technical.sections">
+                      {{section.name}}
+                      <button style="background-color: transparent; border: 0;" (click)="removeSection(section)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- <div class="oneSection m-1" *ngIf="selectedSection">
+                    {{selectedSection.name}}
+                    <button style="background-color: transparent; border: 0;" (click)="removeSection(selectedSection)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>  -->
+
+                 <div class="form-group">
+                  <label for="section">Add Sections</label>
+                  <div>
+                    <select class="form-control"  (change)="onSectionSelection($event.target)"  >
+                      <option value="" selected>Choose a section</option>
+                      <option *ngFor="let section of AllSectionsInDb" [value]="section.name">{{section.name}}</option>
+                    </select>
+
+                  </div>
+
+
+                  <!-- <div class="d-flex flex flex-wrap">
+                    <div class="oneSection m-1" >
+                      {{selectedSection.name}}
+                      <button style="background-color: transparent; border: 0;" (click)="removeSection(selectedSection)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+               -->
+
+
+                <button [disabled]="myForm.invalid" type="submit" class="btn btn-success m-4 text-center">Update Information</button>
+
+              </div>
+
+
+            </div>
+           </div>
+           </div>
+          </form>
+      </div>
+  </div>
+</div>

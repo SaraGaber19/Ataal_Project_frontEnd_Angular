@@ -1,0 +1,188 @@
+<!-- Sidebar Start -->
+<div class="sidebar  pb-3">
+  <nav class=" ">
+
+      <div class=" w-100">
+
+           <!-- <form class="d-none d-md-flex ms-4 mt-5 mb-3">
+        <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+    </form> -->
+    <!-- <div>
+      <div class="ms-4 bg-success p-2">
+        <div class="d-flex align-items-center ">
+          <img class="rounded-circle me-3" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+         <div> <h6>sara gaber</h6>
+          <div>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div> -->
+    <div class="technician pt-5 text-center px-3">
+      <h3 class="  w-75 mx-auto text-center mt-2 mb-5  Tech_Design">Top Technicians</h3>
+      <div class="  mt-5">
+        <div class="align-items-center">
+          <!-- //currentTechnician?.photo -->
+          <!-- https://localhost:7273/23185023-5d27-4937-a355-7e1808881e07.png -->
+
+
+
+          <img class="rounded-circle" *ngIf="currentTechnician?.photo!=null; " src="https://localhost:7273/{{currentTechnician?.photo}}"  alt="{{currentTechnician?.name }}"style="width: 50px; height: 50px;"/>
+         <!-- <ng-template #anotherPhoto> -->
+          <img *ngIf=" currentTechnician?.photo==null;" src="https://localhost:7273/avatar.jpg" alt="{{currentTechnician?.name }}" style="width: 50px; height: 50px;"/>
+        <!-- </ng-template> -->
+        <h4 class="text-dark mt-3 mb-1">{{currentTechnician?.name}}</h4>
+        <div>
+          <i *ngFor="let i of [].constructor(rateNumber); let index = index" class="fa-solid fa-star star"></i>
+
+
+        </div>
+        </div>
+        <p class="text-dark mt-2">{{ currentTechnician?.phone }}</p>
+        <p class="text-dark">{{ currentTechnician?.brief }}</p>
+
+      </div>
+      </div>
+
+      </div>
+  </nav>
+</div>
+<!-- Sidebar End -->
+
+
+
+
+
+
+
+<div class="content  ">
+  <div class="row flex-wrap justify-content-center align-items-center">
+ <div class="col-md-5 "  *ngFor="let problem of  Section_Problems">
+<div class="card  mx-3 my-3 ">
+  <div class="card-body">
+
+    <div class="d-flex align-items-center justify-content-between  ">
+      <div class="d-flex align-items-center">
+        <!-- customerPhoto -->
+
+        <img class="rounded-circle me-3" *ngIf="problem?.customerPhoto!=null; else anotherPhoto" src="https://localhost:7273/{{problem?.customerPhoto}}"  alt="{{problem?.name }}"style="width: 40px; height: 40px;">
+        <ng-template #anotherPhoto>
+         <img class="rounded-circle me-3"  src="assets/img/user.jpg"  alt="{{currentTechnician?.name }}"style="width: 40px; height: 40px;">
+       </ng-template>
+
+     <div>
+      <h4 class="text-dark">{{problem.customerName}}</h4>
+</div>
+      </div>
+<!-- </div> -->
+
+<!-- <h5 class="DesignTime ">15 Minutes ago</h5> -->
+
+        <button class="bg-light p-1" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <!-- <span>Redial</span> -->
+            <a routerLink="/details/{{problem.id}}">See more</a>
+          </button>
+
+          <button mat-menu-item>
+            <mat-icon>help</mat-icon>
+            <span (click)="sendProbId(problem.id)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">give Recommindition</span>
+
+          </button>
+        </mat-menu>
+    </div>
+
+    <div class="d-flex align-items-center mt-3 ms-5">
+      <h3 class="card-title fw-bolder Title_Design">{{problem.title}}</h3>
+
+    </div>
+
+<div class="d-flex justify-content-between">
+  <h5 class="DesignTime ms-5 ">{{getDate(problem.date)}}</h5>
+  <p *ngIf="problem.keyword!=null" class="Design px-3">{{problem.keyword}}</p>
+</div>
+
+    <!-- <p class="card-text">{{problem.description}}</p> -->
+    <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+
+
+      <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button> -->
+<!-- <mat-menu #menu="matMenu">
+  <button mat-menu-item>See more </button>
+  <button mat-menu-itemdata-bs-toggle="modal" data-bs-target="#staticBackdrop">give Recommindition</button>
+</mat-menu> -->
+ <!-- <button class="btn btn-dark me-2"> <a routerLink="/details/{{problem.id}}">See more</a></button>
+<button class="btn btn btn-outline-success"data-bs-toggle="modal" data-bs-target="#staticBackdrop">give Recommindition</button> -->
+
+  </div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Your Recomindition</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <!-- start Dropdown -->
+      <div class="dropdown">
+       <div class="row justify-content-between ">
+<div class="col-md-6">
+<h5 class="text-dark">Your Recomindition Technical</h5>
+</div>
+<div class="col-md-5">
+  <button class="btn btn-secondary dropdown-toggle me-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Select Technical
+   </button>
+   <ul class="dropdown-menu">
+    <li><a class="dropdown-item" (click)="sendTec(tech.id)"   *ngFor="let tech of Technicans" >{{tech.name}}</a></li>
+
+  </ul>
+</div>
+       </div>
+
+      </div>
+      <!-- End -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"data-bs-dismiss="modal"(click)="SendRecom()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="Add_Prob">
+
+  <a  [routerLink]="['/ProblemCustomer']">  <i class="fa-solid fa-plus"></i></a>
+
+ </div>
+ <div>
+  <div [class]="close?' Rule text-center d-none' :'Rule text-center d-block'">
+    <div class="alert alert-danger">
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn-close " aria-label="Close" (click)="Close()"></button>
+      </div>
+
+      <p>You can Add New Problem from here</p>
+    </div>
+
+  <i class="fa-solid fa-arrow-trend-down "></i>
+ </div>
+

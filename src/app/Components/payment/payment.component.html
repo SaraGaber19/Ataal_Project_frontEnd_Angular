@@ -1,0 +1,70 @@
+
+<div class="my-5   m-auto ">
+  <h2>Payment Form </h2>
+  <form [formGroup]="Payment" (ngSubmit)="submitPayment()">
+    <div class="row">
+
+    <div class="col-md-12">
+
+      <div class=" m-auto ">
+        <div><label>Credit Number</label></div>
+        <div><input formControlName="Credit_Num" type="text" class="form-control" /></div>
+        <div class="text-danger my-2"*ngIf="Payment.controls['Credit_Num'].touched&&Payment.controls['Credit_Num'].invalid">
+          <p>Credit Number Not Valid</p>
+        </div>
+      </div>
+      <div class=" m-auto ">
+        <div><label>CVC</label></div>
+        <div><input formControlName="CVC" type="text" class="form-control" /></div>
+        <div class="text-danger my-2"*ngIf="Payment.controls['CVC'].touched&&Payment.controls['CVC'].invalid">
+          <p>CVC Not Valid</p>
+        </div>
+      </div>
+
+      <div class=" m-auto ">
+        <div><label>EXP Date</label></div>
+        <div><input formControlName="Exp" type="text" class="form-control" placeholder=" EX:02/10"  /></div>
+        <div class="text-danger my-2"*ngIf="Payment.controls['Exp'].touched&&Payment.controls['Exp'].invalid">
+          <p>EXP Date Not Valid</p>
+        </div>
+      </div>
+
+
+    </div>
+    </div>
+
+
+    <button [disabled]="Payment.invalid" class="btn  btn_Py   mt-4" type="submit">Submite 20$</button>
+</form>
+
+</div>
+
+
+<section>
+  <div class="notification" [class]="Pay?'d-block':'d-none'">
+<div class="layer ">
+  <div class="information p-4 text-center ">
+    <div class=" w-100 h-100 contain  d-flex align-items-center justify-content-center ">
+     <div>
+      <div class=" text-center">
+        <h2 class="">
+          {{Message}}
+        </h2>
+
+      </div>
+      <div class=" btns ">
+        <button *ngIf="!ok" class="btn btn-dark" (click)="close()">Close</button>
+        <button *ngIf="ok" class="btn btn-success" (click)="Ok()">Ok</button>
+      </div>
+     </div>
+    </div>
+    </div>
+
+</div>
+  </div>
+</section>
+
+
+
+
+

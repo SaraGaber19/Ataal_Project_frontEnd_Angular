@@ -1,0 +1,87 @@
+.fa-hourglass-half{
+  color:rgb(202, 202, 33);
+}
+.design{
+  border: 2px solid rgb(202, 202, 33);
+}
+.design2{
+  border: 2px solid green;
+}
+.fa-circle-check{
+  color: green;
+}
+// #star5:hover,
+// #star5:hover  #star4,
+// #star5:hover  #star3,
+// #star5:hover  #star2,
+// #star5:hover  #star1 {
+//   color: yellow;
+// }
+#star5:hover ~ #star4 {
+  color: yellow;
+}
+
+
+
+.DesignName{
+  color: rgb(44,168,0);
+}
+body {
+	// background: #F1F1F1;
+
+	h1 {
+    	font-family: 'Lobster', cursive;
+		margin: 50px 20px 40px;
+		font-size: 50px;
+		letter-spacing: 0.5px;
+		color: #999999;
+		text-align: center;
+	}
+}
+
+$stars: 5;
+$star-size: 40px;
+$star-spacing: 2px;
+$star-on-color: #F9DF4A;
+$star-off-color: #CCCCCC;
+
+.rating {
+
+	height: $star-size;
+	margin: 0 auto;
+	padding: 40px 50px;
+	border: 1px solid #CCCCCC;
+	background: #F9F9F9;
+
+	label {
+		float: right;
+		position: relative;
+		width: $star-size;
+		height: $star-size;
+		cursor: pointer;
+
+		&:not(:first-of-type) {
+			padding-right: $star-spacing;
+		}
+
+		&:before {
+			content: "\2605";
+			font-size: $star-size + 2px;
+			color: $star-off-color;
+			line-height: 1;
+		}
+	}
+
+	input {
+		display: none;
+	}
+
+	input:checked ~ label:before,
+	&:not(:checked) > label:hover:before,
+	&:not(:checked) > label:hover ~ label:before {
+		color: $star-on-color;
+	}
+
+
+}
+

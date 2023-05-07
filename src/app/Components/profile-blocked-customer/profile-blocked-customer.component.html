@@ -1,0 +1,34 @@
+<div *ngFor="let Technican of Technicans" class=" bg-light p-3 w-50 m-auto border mb-3 ">
+  <div class="d-flex justify-content-between">
+  <div class="d-flex align-items-center ">
+    <img class="rounded-circle me-3" [src]="Technican.photo?'https://localhost:7273/{{Technican.photo}}':'assets/img/user.jpg'" alt="" style="width: 40px; height: 40px;">
+   <div> <h4 class="text-dark"> {{Technican.name}}</h4>
+
+
+  </div>
+</div>
+<button class="btn btn-success"data-bs-toggle="modal" data-bs-target="#UnBlockTechnican"  (click)="sendTechnicanId(Technican.id)">UnBlock</button>
+</div>
+  </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="UnBlockTechnican" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-danger" id="exampleModalLabel">Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+     Are you Want to unBlock this Tchnican?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="Unblock()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

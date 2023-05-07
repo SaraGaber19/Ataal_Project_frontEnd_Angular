@@ -1,0 +1,44 @@
+*{
+  box-sizing:border-box;
+}
+
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.mat-step-icon {
+background-color: aqua!important;
+}
+
+.mat-mdc-chip-set {
+  max-width: 200px;
+}
+.Design{
+  border-left: 1px rgb(179, 179, 181) solid;
+}
+.btnNext{
+  background-color: rgb(20, 168, 3);
+  border-radius: 20px;
+
+}
+.bord-botom{
+  border-bottom: 1px rgb(179, 179, 181) solid;
+  min-height: 60vh;
+
+}
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+
+  background-color:rgb(20, 168, 3)  !important;
+}
+h3{
+  font-size: 30px !important;
+  font-weight: bolder;
+  margin-bottom: 30px;
+  line-height: 40px;
+  color: #13544e;
+}
+.btn-Des{
+  background-color:rgb(20, 168, 3) ;
+}
+

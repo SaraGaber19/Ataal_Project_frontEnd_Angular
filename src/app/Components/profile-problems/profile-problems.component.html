@@ -1,0 +1,60 @@
+<div [class]=" problem.isSolved?' card w-75 mx-auto my-3  design2' :' card w-75 mx-auto my-3  design' " *ngFor="let problem of Problems">
+  <div class="card-body">
+    <div class="d-flex align-items-center justify-content-between  ">
+      <div class="d-flex align-items-center">
+     <div>
+      <h3 class="text-dark mb-1 fw-bold">{{getDate(problem.date)}}</h3>
+      <h5 class="text-dark">{{getTime(problem.date)}}</h5>
+      </div>
+</div>
+        <h2 *ngIf="!problem.isSolved"  class="text-dark"><i class="fa-solid fa-hourglass-half "></i></h2>
+        <h2 *ngIf="problem.isSolved"  class="text-dark"><i class="fa-solid fa-circle-check"></i></h2>
+
+    </div>
+    <div class="d-flex align-items-center justify-content-between  ">
+      <h2 class="card-title text-dark">{{problem.title}}</h2>
+
+    </div>
+
+    <p class="card-text">{{problem.description}}</p>
+    <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+    <div class="d-flex  justify-content-end">
+<button *ngIf="!problem.isSolved" class="btn btn-dark me-2">Edite</button>
+<button *ngIf="!problem.isSolved" class="btn btn-success me-2 " data-bs-toggle="modal" data-bs-target="#SolvedModal"(click)="sendProblemId(problem.id)">Solved</button>
+<!--   -->
+    </div>
+  </div>
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="SolvedModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-danger" id="exampleModalLabel">Confirmiation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    Are you sure that you Want to assign this problem as Solved
+      </div>
+<div *ngIf="Current?.techId!=null">
+<h3 class="ms-3">Give Rate To your Technican <span class="DesignName">{{Current?.technicanName}}</span></h3>
+
+<div class="rating  d-flex justify-content-center align-items-center">
+    <input type="radio" id="star5" name="rating" value="5" (click)="sendrate(5)" /><label for="star5"></label>
+    <input type="radio" id="star4" name="rating" value="4" (click)="sendrate(4)" /><label for="star4"></label>
+    <input type="radio" id="star3" name="rating" value="3" (click)="sendrate(3)" /><label for="star3"></label>
+    <input type="radio" id="star2" name="rating" value="2" (click)="sendrate(2)"/><label for="star2"></label>
+    <input type="radio" id="star1" name="rating" value="1" (click)="sendrate(1)"/><label for="star1"></label>
+</div>
+
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" (click)="AssignAsSolved()" data-bs-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

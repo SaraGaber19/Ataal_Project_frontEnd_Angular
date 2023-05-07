@@ -1,0 +1,24 @@
+<div class="container mt-5 ">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div *ngFor="let customer of AllBlockedCustomers">
+        <div class="card mb-4 ms-5 clickable-div p-3" >
+          <div class="row">
+            <div class="col-1" >
+              <img *ngIf="customer.photo !== null" [src]="'https://localhost:44344/' + customer.photo"  alt="Customer Image" class="img-fluid rounded-circle w-100">
+              <img *ngIf="customer.photo === null" src="assets/Images/nouserphoto.png"  alt="Customer Image" class="img-fluid rounded-circle w-100">
+            </div>
+            <div class="col-8 mt-3 " style="font-weight: 500;">
+                {{customer.name}}
+            </div>
+            <div class="col-3 mt-1">
+              <button class="btn btn bg-success text-light" (click)="UnBlock(customer)">UnBlock</button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

@@ -1,0 +1,105 @@
+
+
+<div class="my-5  w-5  ">
+  <h2>Edite Your Data </h2>
+  <form [formGroup]="Register" (ngSubmit)="submitRegister()">
+    <div class="row">
+      <div class="col-md-4">
+        <div class=" m-auto ">
+          <div><label>First Name</label></div>
+          <div class="text-danger my-2">
+          <div><input formControlName="firstName" type="text" class="form-control" /></div>
+          <div *ngIf="Register.controls['firstName'].touched&&Register.controls['firstName'].invalid" class="text-danger my-2">
+            <p *ngIf="Register.controls['firstName'].errors?.['required']">First Name required</p>
+            <p *ngIf="Register.controls['firstName'].errors?.['minlength']">First Name min length is 3 letter</p>
+            <p *ngIf="Register.controls['firstName'].errors?.['maxlength']">First Name max length is 10 letter</p>
+          </div>
+          </div>
+        </div>
+        <div class=" m-auto ">
+          <div><label>Last Name</label></div>
+          <div><input formControlName="lastName" type="text" class="form-control" /></div>
+          <div class="text-danger my-2">
+            <div *ngIf="Register.controls['lastName'].touched&&Register.controls['lastName'].invalid" class="text-danger my-2">
+              <p *ngIf="Register.controls['lastName'].errors?.['required']">Last Name required</p>
+              <p *ngIf="Register.controls['lastName'].errors?.['minlength']">Last Name min length is 3 letter</p>
+              <p *ngIf="Register.controls['lastName'].errors?.['maxlength']">Last Name max length is 10 letter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class=" m-auto ">
+          <div><label>Address</label></div>
+          <div><input formControlName="Address" type="text" class="form-control" /></div>
+
+            <div class="text-danger my-2">
+              <div *ngIf="Register.controls['Address'].touched&&Register.controls['Address'].invalid" class="text-danger my-2">
+                <p *ngIf="Register.controls['Address'].errors?.['required']">Address required</p>
+                <p *ngIf="Register.controls['Address'].errors?.['minlength']">Address min length is 10 letter</p>
+                <p *ngIf="Register.controls['Address'].errors?.['maxlength']">Address max length is 100 letter</p>
+              </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+      <div class=" m-auto ">
+        <div><label>user Name</label></div>
+
+        <div class="text-danger my-2">
+          <div><input formControlName="userName" type="text" class="form-control" /></div>
+          <div *ngIf="Register.controls['userName'].touched&&Register.controls['userName'].invalid" class="text-danger my-2">
+            <p *ngIf="Register.controls['userName'].errors?.['required']">user Name required</p>
+            <p *ngIf="Register.controls['userName'].errors?.['minlength']">user Name min length is 10 letter</p>
+            <p *ngIf="Register.controls['userName'].errors?.['maxlength']">user Name max length is 100 letter</p>
+          </div>
+        </div>
+      </div>
+      <div class=" m-auto ">
+        <div><label>Email</label></div>
+        <div class="text-danger mb-2">
+        <div><input formControlName="Email" type="text" class="form-control" /></div>
+        <div class="text-danger my-2"*ngIf="Register.controls['Email'].touched&&Register.controls['Email'].invalid"><p>Email Not Valid</p></div>
+      </div>
+      </div>
+      <div class=" m-auto ">
+        <div><label>phone</label></div>
+        <div><input formControlName="phone" type="text" class="form-control" /></div>
+        <div class="text-danger my-2">
+          <div *ngIf="Register.controls['phone'].touched&&Register.controls['phone'].invalid" class="text-danger my-2">
+            <p *ngIf="Register.controls['phone'].errors?.['required']">phone required</p>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+      <div class=" m-auto ">
+        <div class="mb-3"><label>Your Img</label></div>
+       <img alt="" class="mb-3" [src]="imageURL" width="110px" height="110px" />
+      </div>
+      <div class=" m-auto ">
+
+        <input formControlName="file"  class="form-control py-1" type="file" multiple id="formFile" (change)="showPreview($event)">
+
+      </div>
+
+
+  </div>
+
+
+    </div>
+
+
+    <button [disabled]="Register.invalid" class="btn btn-info" type="submit">Update</button>
+</form>
+
+</div>
+
+
+
+
+
+

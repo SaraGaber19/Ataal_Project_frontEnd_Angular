@@ -1,0 +1,46 @@
+*{
+  box-sizing: border-box;
+}
+li{
+margin-top: 20px;
+// padding-left: 22px;
+padding-top: 5px;
+
+
+}
+h2{
+  font-size: 25px !important;
+  font-weight: bolder;
+  margin-bottom: 40px;
+  padding-bottom: 5px;
+  width: fit-content;
+  border-bottom: solid 1px rgb(190, 188, 188) ;
+}
+
+.active{
+
+  border-left:  solid 2px rgb(44,168,0);
+  color: rgb(44,168,0);
+}
+ul{
+  list-style: none;
+padding: 0;
+  border-left:  solid 1px rgb(190, 188, 188);
+  padding-bottom: 20px;
+
+}
+
+a{
+  padding-left:20px ;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  color: rgb(106, 108, 106);
+}
+
+.Router_Design{
+  border: solid 1px rgb(170, 168, 168);
+  border-radius: 30px;
+  padding: 20px;
+  height: 70vh;
+}

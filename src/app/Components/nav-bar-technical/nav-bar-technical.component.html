@@ -1,0 +1,151 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="assets\Images\logo3.jpg" class="rounded-circle" height="44"
+        alt="" loading="lazy" /> </a>
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Search -->
+      <form class="me-3">
+        <div class="form-white input-group" style="width: 250px;">
+          <input type="search" class="form-control rounded" placeholder="Search"
+            aria-label="Search" aria-describedby="search-addon"
+            (keyup.enter)="onSearchEnterClick($event)" />
+        </div>
+      </form>
+
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Find Job -->
+        <li class="nav-item">
+          <a class="nav-link hoverWord" routerLinkActive="active"
+            routerLink="/FindJob">Find Job</a>
+        </li>
+        <!-- My Jobs -->
+        <li class="nav-item ">
+          <a class="nav-link hoverWord" routerLinkActive="active"
+            routerLink="/MyJob">My Jobs</a>
+        </li>
+        <!-- All Sections  edite back and front -->
+        <!-- <li class="nav-item me-auto mb-2 mb-lg-0">
+             <div ngbDropdown class="">
+              <a type="button" class=" nav-link hoverWord" id="dropdownBasic1" ngbDropdownToggle>
+                AllSections
+              </a>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <a ngbDropdownItem *ngFor="let section of AllSections"  (click)="FilterProblemsBySection(section.id)"  routerLinkActive="router-link-active">{{section.name}}</a>
+              </div>
+              </div>
+          </li> -->
+        <li class="nav-item ">
+          <a class="nav-link hoverWord" routerLinkActive="active"
+            routerLink="/PriceTable">Payment</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li>
+          <a (click)="logout()" class="dropdown-item">Log Out</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav d-flex flex-row ms-auto me-1">
+        <!-- Profile Image -->
+        <li class="nav-item me-3 me-lg-0 dropdown">
+          <a class="nav-link" routerLink="/TechnicalProfile"
+            id="navbarDropdown1" role="button" data-mdb-toggle="dropdown"
+            aria-expanded="false">
+            <img [src]="'https://localhost:7273/image/' + Technical.photo"
+              class="rounded-circle" height="33"
+              alt="" loading="lazy" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <nav class="navbar navbar-expand-lg w-100" style="background-color: #c9cdde;" >
+  <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="assets\Images\logo3.jpg" class="rounded-circle" height="44"
+        alt="" loading="lazy" />  </a>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="me-3">
+          <div class="form-white input-group" style="width: 250px;">
+            <input type="search" class="form-control rounded" placeholder="Search"
+              aria-label="Search" aria-describedby="search-addon" />
+          </div>
+        </form>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link hoverWord" routerLinkActive="active" routerLink="/FindJob">Find Job</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link hoverWord"  routerLinkActive="active" routerLink="/MyJob">My Jobs</a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link hoverWord"  routerLinkActive="active" routerLink="/PriceTable">Payment</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown link
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+
+
+        </ul>
+
+
+
+
+        <ul class="navbar-nav d-flex flex-row ms-auto me-1">
+          <li class="nav-item me-3 me-lg-0 dropdown">
+            <a class="nav-link" routerLink="/TechnicalProfile"  id="navbarDropdown1" role="button" data-mdb-toggle="dropdown"
+              aria-expanded="false">
+              <img [src]="'https://localhost:7273/' + Technical.photo" class="rounded-circle" height="33"
+                alt="" loading="lazy" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ -->

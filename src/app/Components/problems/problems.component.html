@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div *ngFor="let problem of problems">
+        <div class="card mb-4 ms-5 clickable-div" routerLink="/detailedProblem/{{problem.id}}" *ngIf="problem.isVIP" onclick="myFunction()">
+          <div class="card-body" >
+
+            <div  class="alert alert-success" role="alert" *ngIf="problem.isVIP">
+
+              <div class="text-center">
+                <img alt="" src="assets/Images/vip-card-icon.svg" width="50vw" height="50vh" >
+              </div>
+
+            </div>
+            <h5 class="card-title text-primary">{{problem.title}}</h5>
+            <p class="card-text">{{problem.description}}</p>
+            <!-- <ul>
+              <li *ngFor="let user of users">
+                {{ user.name }} ({{ user.age }})
+              </li>
+            </ul> -->
+            <span class="oneKeyWord m-1">
+              {{problem.key_Word}}
+            </span>
+
+            <pre class="card-text mt-1" style="color: gray;"> {{ formatDateTime(problem.date) }}</pre>
+          </div>
+
+
+        </div>
+      </div>
+
+
+      <div *ngFor="let problem of problems">
+
+        <div class="card mb-4 ms-5 clickable-div" routerLink="/detailedProblem/{{problem.id}}" *ngIf="!problem.isVIP" >
+          <div class="card-body" >
+            <h5 class="card-title text-primary">{{problem.title}}</h5>
+            <p class="card-text">{{problem.description}}</p>
+            <!-- <ul>
+              <li *ngFor="let user of users">
+                {{ user.name }} ({{ user.age }})
+              </li>
+            </ul> -->
+            <span class="oneKeyWord m-1">
+              {{problem.key_Word}}
+            </span>
+
+            <pre class="card-text mt-1" style="color: gray;"> {{ formatDateTime(problem.date) }}</pre>
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
