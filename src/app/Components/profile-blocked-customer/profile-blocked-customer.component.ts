@@ -11,11 +11,12 @@ import { AuthService } from 'src/app/Services/Auth_Services/auth.service';
 export class ProfileBlockedCustomerComponent implements  OnInit {
 Technicans:any
 Technican_ID:number=0;
+CustId:number=0;
 constructor(private Customer:CustomerService,private Auth:AuthService){}
 
 Unblock(){
 
-  this.Customer.UnBlockTechnican({customerId:this.Auth.UserId,technicalId:this.Technican_ID}).subscribe((data)=>
+  this.Customer.UnBlockTechnican({customerId:this.CustId,technicalId:this.Technican_ID}).subscribe((data)=>
   console.log(data)
   )
 
@@ -30,9 +31,18 @@ sendTechnicanId(id:number){
 
 
 ngOnInit(): void {
-  this.Customer.getBlockedCustomer(this.Auth.UserId).subscribe((data)=>{
-    this.Technicans=data
-  })
+
+  this.Auth.UserId.subscribe(
+    ()=>{
+  if(this.Auth.UserId.getValue()!=null){
+    this.CustId=this.Auth.UserId.getValue();
+    this.Customer.getBlockedCustomer(this.Auth.UserId.getValue()).subscribe((data)=>{
+      this.Technicans=data
+    })
+  }
+})
+
+ 
 
 
 

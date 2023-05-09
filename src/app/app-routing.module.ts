@@ -26,6 +26,8 @@ import { SideBarComponent } from './Components/side-bar/side-bar.component';
 import { SuccsessPaymentComponent } from './Components/succsess-payment/succsess-payment.component';
 import { TechnicalProfileComponent } from './Components/technical-profile/technical-profile.component';
 import { UpdateTechnicalProfileComponent } from './Components/update-technical-profile/update-technical-profile.component';
+import { BeforeRegisterComponent } from './Components/before-register/before-register.component';
+import { ComplatedPublishComponent } from './Components/complated-publish/complated-publish.component';
 const routes: Routes = [
 // {path:"",redirectTo:HomeComponent},
 {path:"",component:HomeComponent},
@@ -38,11 +40,11 @@ const routes: Routes = [
   {path:"blocked-technical",component:ProfileBlockedCustomerComponent},
 
 ]},
-
+{path:"beforeRegister",component:BeforeRegisterComponent},
 {path:"ProfileProblems",component:ProfileProblemsComponent},
 {path:"Login",component:LoginComponent},
 {path:"Register",component:RegisterComponent},
-
+{path:"Published",component:ComplatedPublishComponent},
 // {path:"CustomerProblem",component:CustomerProblemComponent},
 {path:"RegisterTech",component:RegisterTechComponent},
 {path:"details/:id",component:DetailsComponent},
@@ -58,6 +60,7 @@ const routes: Routes = [
 
 
 {path:"HomeTechnical",component:HomeTechnicalComponent},
+{path:"TechnicalProfile/:id",component:TechnicalProfileComponent},
 {path:"TechnicalProfile",component:TechnicalProfileComponent},
 {path:"UpdateTechnicalProfile",component:UpdateTechnicalProfileComponent},
 {path:"FindJob",component:HomeTechnicalComponent},

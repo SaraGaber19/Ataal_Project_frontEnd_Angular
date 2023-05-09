@@ -136,4 +136,10 @@ getDate(dateString: string): string {
     return `${diffDays} day${diffDays === 1 ? '' : 's'} ago`;
   }
 }
+getwords(str:string){
+  let words = str.split(" "); // split the string into an array of words
+  let firstTenWords = words.slice(0, 10); // extract the first 10 words
+  return firstTenWords.join(" "); // join the first 10 words back into a string
+
+  }
 }

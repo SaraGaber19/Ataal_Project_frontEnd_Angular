@@ -3,7 +3,9 @@
   padding: 2rem;
   border-radius: 1rem;
 }
-
+.modal-dialog {
+  top: 30% !important;
+}
 .container > .row{
   border-bottom: 0.01rem solid lightgray;
   margin-bottom: 1rem;

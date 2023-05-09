@@ -1,0 +1,29 @@
+<div class="w-50 bg-light mx-auto text-center  row">
+  <h1 class="m-auto text-center my-5">Join as a Customer or Technican</h1>
+<div class="col-md-5 text-center">
+<div class="d-flex justify-content-between pt-3">
+  <img src="assets/img/seo.png">
+  <input (change)="value(0)" class="p-3" type="radio" name="type">
+</div>
+
+<label>
+  <h2>I'm a Technican
+    </h2>
+  </label>
+</div>
+<div class="col-md-5 text-center">
+  <div class="d-flex justify-content-between pt-3">
+    <img src="assets/img/digital.png">
+    <input (change)="value(1)" class="p-3" type="radio" name="type">
+  </div>
+  <label>
+    <h2>
+      I'm a Customer
+    </h2>
+
+  </label>
+
+</div>
+<button  (click)="navigate()" [disabled]="!cust&&!Tech" class="w-50 btn btn-Create"> Create An Account</button>
+<p>Already have an account? <span ><a class="mainColor" [routerLink]="['/Login']" >Log In</a></span></p>
+</div>

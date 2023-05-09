@@ -5,6 +5,7 @@ export interface Technican {
   rate:number,
   address:string,
   breif?:string,
+  allProblemsCount:number;
   sections?:{id:number,name:string}[]
 
 }

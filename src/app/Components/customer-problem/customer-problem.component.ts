@@ -93,6 +93,7 @@ ngOnInit(): void {
     console.log(this.data.get('File1'));
     this.ProblemServ.AddProblem(this.data).subscribe((data)=>{
          this.ProblemId= +(data)
+         if()
         console.log(data)
     })
 
@@ -134,9 +135,9 @@ ngOnInit(): void {
 
 
 
-  ReturnSection(){
-    this._router.navigateByUrl("/CustomerSections")
-  }
+  // ReturnSection(){
+  //   this._router.navigateByUrl("/CustomerSections")
+  // }
 
 
   // submitRegister(){

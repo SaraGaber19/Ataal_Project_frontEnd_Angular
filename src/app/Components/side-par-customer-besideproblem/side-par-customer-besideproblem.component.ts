@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/Auth_Services/auth.service';
 import { DetailedProlemService } from 'src/app/Services/detailed-prolem.service';
 import { GlobalVaribaleService } from 'src/app/Services/global-varibale.service';
 
@@ -10,14 +11,24 @@ import { GlobalVaribaleService } from 'src/app/Services/global-varibale.service'
 })
 export class SideParCustomerBesideproblemComponent {
   constructor(private myservice: DetailedProlemService, private myroute:ActivatedRoute,
-    private router: Router, private GlobalVar: GlobalVaribaleService ){
+    private router: Router, private GlobalVar: GlobalVaribaleService ,
+    private Auth:AuthService){
 
   }
 
   portNumber = this.GlobalVar.PortNumber;
   Customer:any;
   block:any;
+  TechId:number=0;
 ngOnInit(): void {
+
+
+  this.Auth.UserId.subscribe(
+    ()=>{
+  if(this.Auth.UserId.getValue()!=null){
+this.TechId=this.Auth.UserId.getValue();
+
+  }})
 
   this.myservice.getUserByID(this.myroute.snapshot.params["id"]).subscribe(
     {
@@ -38,7 +49,7 @@ blockCustomer(){
   this.block  =
   {
     "customerId": this.Customer.id,
-    "technicalId": 1
+    "technicalId": this.TechId
   }
   this.myservice.blockCustomer(this.block).subscribe(                     //after lohin need replace
     {

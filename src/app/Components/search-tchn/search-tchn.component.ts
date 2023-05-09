@@ -141,4 +141,26 @@ sectionFilter(){
     this.FinalResult=this.FilterResult;
   }
 }
+BlockedDone:boolean=false;
+BlockedId:number=0;
+sendId(id:number){
+this.BlockedId=id;
+}
+
+
+blockTech(){
+
+const data= {
+  customerId:  this.customerId,
+  technicalId: this.BlockedId
+}
+this.search.BlockTech(data).subscribe((data)=>{
+  console.log(data)
+  if(data!=null){
+    this.BlockedDone=true;
+  }
+})
+}
+
+
 }

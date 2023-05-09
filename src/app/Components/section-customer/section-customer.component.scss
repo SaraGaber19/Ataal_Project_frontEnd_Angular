@@ -1,6 +1,24 @@
 .star{
   color: yellow;
 }
+.DesignSince{
+  margin-left: 20px;
+border:#00b074 1px solid;
+ padding-top: 5px;
+ padding-bottom: 5px;
+height: fit-content;
+ padding-left: 10px;
+ padding-right: 10px;
+  border-radius: 30px;
+  width: fit-content;
+}
+.icon{
+color: #00b074;
+}
+
+.card  i{
+  margin-right: 10px;
+}
 .card{
   overflow: hidden;
 }
@@ -8,7 +26,7 @@
   position: fixed;
   bottom: 80px;
   right: 30px;
-  background-color: rgb(44,168,0);
+  background-color: #00b074;
   padding-top: 12px;
   padding-bottom: 10px;
   padding-left: 12px;
@@ -20,7 +38,7 @@
   color: #f3eced;
 }
 .fa-arrow-trend-down{
-  color: rgb(44,168,0);
+  color: #00b074;
   font-size: 40px;
   margin-left: 70px !important;
 }
@@ -41,7 +59,7 @@ z-index: 999999999;
 }
 
 .Tech_Design{
-background-color: rgb(44,168,0);
+background-color: #00b074;
 padding: 10px;
 border-radius: 30px;
 color: white !important;
@@ -49,10 +67,10 @@ color: white !important;
 
 a , span {
   text-decoration: none;
-  color: rgb(44,168,0);
+  color: #00b074;
 }
 .Title_Design:hover{
-  color: rgb(44,168,0);
+  color: #00b074;
 
 }
 @media (max-width: 991.98px) {
@@ -80,7 +98,7 @@ a , span {
   }
 }
 .Design{
-  background-color:  rgb(173, 170, 170);
+  background-color:  #003554;
   border-radius: 20px;
 color: white;
   width: fit-content;

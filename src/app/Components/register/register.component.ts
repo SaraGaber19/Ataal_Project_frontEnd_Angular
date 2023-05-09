@@ -20,6 +20,8 @@ Register:FormGroup=new FormGroup({
   'password':new FormControl('',[Validators.required]),
 
 })
+succ:boolean=false;
+err:any
 submitRegister(){
   if(this.Register.invalid){
     return;
@@ -28,8 +30,20 @@ submitRegister(){
   this.Auth.Sinup(this.Register.value).subscribe((data)=>{
     console.log(data)
 
-    this._Router.navigateByUrl("");
-  });
+
+
+this.succ=true
+this.err=null;
+
+
+
+this._Router.navigateByUrl("/Login");
+  },(erro)=>{
+    this.succ=false
+    console.log(erro.error[0].description)
+    this.err=erro.error[0].description;
+  } );
+
   console.log(this.Register.value)
 }
 constructor(private Auth: AuthService, private _Router:Router){}

@@ -6,6 +6,7 @@ import { ReportService } from 'src/app/Services/report.service';
 import { GlobalVaribaleService } from 'src/app/Services/global-varibale.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/Services/Auth_Services/auth.service';
+import { SearchService } from 'src/app/Services/search.service';
 
 @Component({
    selector: 'app-technical-profile',
@@ -16,8 +17,10 @@ export class TechnicalProfileComponent {
 
   constructor(private myservice: TechnicalProfileServicesService,
     private reportService: ReportService,
-    private myroute:ActivatedRoute,private modalService: NgbModal, modalConfig: NgbModalConfig
-    ,private global: GlobalVaribaleService,private Auth: AuthService) {
+    private modalService: NgbModal, modalConfig: NgbModalConfig
+    ,private global: GlobalVaribaleService,private Auth: AuthService,
+    private _router:ActivatedRoute,
+    private search:SearchService) {
       // customize default modal options
       modalConfig.backdrop = 'static';
       modalConfig.keyboard = false;
@@ -27,7 +30,7 @@ export class TechnicalProfileComponent {
     openModal(content:any) {
       this.modalService.open(content, { centered: true });
     }
-
+    message:string="";
     Technical:any;
     Stars:any = [];
     RemainingStars:any = [];
@@ -35,12 +38,73 @@ export class TechnicalProfileComponent {
     TechnicalId:any;
     PortNumber = this.global.PortNumber;
     TechId:number=0;
+    MyTech :any;
+    myProfile:boolean=false;
+
+    sendReviwe(){
+
+
+    const  data= {
+        customer_Id: this.TechId,
+        technical_Id: this.MyTech,
+        description: this.message
+      }
+      this.search.SendReview(data).subscribe((data)=>{console.log(data)})
+      console.log(this.MyTech);
+      console.log(this.message);
+      console.log(this.TechId);
+      
+    }
     ngOnInit(): void {
+
+
+      this.MyTech = this._router.snapshot.paramMap.get('id')||undefined;
+    
+    
+
+
+
       this.Auth.UserId.subscribe(
         ()=>{
       if(this.Auth.UserId.getValue()!=null){
 
           this.TechId=this.Auth.UserId.getValue();
+
+          if(this.MyTech!=undefined){
+            this.myProfile=false;
+            this.myservice.getTechnicalByID(this.MyTech).subscribe(
+              {
+                next: (data)=>{
+                  this.Technical = data;
+                  this.TechnicalId =this.Technical.id;
+                  console.log("data");
+                  console.log(this.Technical);
+      
+      
+                  if(!this .Technical.rate){
+                    for (let i = 0; i < 5; i++) {
+                      this.RemainingStars [i] = i;
+                    }
+                  }
+                  for (let i = 0; i < this.Technical.rate; i++) {
+                    this.Stars[i] = i;
+                  }
+      
+      
+                  for (let i = 0; i < 5-this.Stars.length; i++) {
+                    this.RemainingStars [i] = i;
+                  }
+      
+      
+                },
+                error: (err)=>{ console.log(err)}
+              });
+        }
+
+
+
+        else{
+          this.myProfile=true;
           this.myservice.getTechnicalByID(this.TechId).subscribe(
             {
               next: (data)=>{
@@ -68,6 +132,8 @@ export class TechnicalProfileComponent {
               },
               error: (err)=>{ console.log(err)}
             });
+          }
+        
       }
     })
 
@@ -104,7 +170,7 @@ export class TechnicalProfileComponent {
       const cause = (<HTMLSelectElement>document.getElementById('causeSelect')).value;
       const description = (<HTMLInputElement>document.getElementById('descriptionTextarea')).value;
 
-      this.reportService.reportReview(this.ReviewId, this.TechnicalId, cause, description).subscribe(
+      this.reportService.reportReview(this.ReviewId, this.TechId, cause, description).subscribe(
 
         (response) => {
           console.log("Report the review successful");
@@ -118,5 +184,24 @@ export class TechnicalProfileComponent {
 
 
     }
+
+    BlockedDone:boolean=false;
+
+
+
+
+blockTech(){
+
+const data= {
+  customerId: this.TechId,
+  technicalId: this.MyTech
+}
+this.search.BlockTech(data).subscribe((data)=>{
+  console.log(data)
+  if(data!=null){
+    this.BlockedDone=true;
+  }
+})
+}
 
   }

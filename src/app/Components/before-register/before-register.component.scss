@@ -1,0 +1,23 @@
+.row{
+  margin: 100px;
+  border: 1px solid gainsboro;
+
+  border-radius: 10px;
+}
+.btn-Create{
+  background-color:  #00b074;
+  border-radius: 30px;
+  margin: 30px auto;
+}
+
+.col-md-5{
+  border: 1px solid gainsboro;
+  margin: 20px;
+  border-radius: 10px;
+  transition: all 0.5s ;
+}
+
+.col-md-5:hover{
+  border: 1px solid #00b074;
+
+}

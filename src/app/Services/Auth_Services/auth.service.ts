@@ -95,6 +95,25 @@ else{
     );
   }
 
+ AssignSections(RegisterData: any): Observable<any> {
+    return this.http.post(
+      'https://localhost:7273/api/Technical/AddSectionstoTechnican',
+      RegisterData
+    );
+  }
+
+  DeleteProblem(id:number): Observable<any> {
+    return this.http.delete(
+     `https://localhost:7273/api/Customer?problemID=${id}`
+    
+    );
+
+  }
+
+
+
+
+
   sinout() {
     localStorage.removeItem('userToken');
     this.userData.next(null);

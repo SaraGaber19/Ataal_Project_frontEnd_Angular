@@ -22,7 +22,7 @@ export class ProblemCustomerComponent {
   updatedProblem:any;
   UpdateProbVIP:boolean=false;
   customerId:string="";
-constructor(private ProblemServ:ProblemService, private _router:ActivatedRoute,private Auth:AuthService){}
+constructor(private ProblemServ:ProblemService, private _router:ActivatedRoute,private Auth:AuthService,private Route:Router){}
 ngOnInit(): void {
 
 
@@ -140,7 +140,10 @@ PostProblem(){
   this.ProblemServ.AddProblem(this.data).subscribe((data)=>{
     this.ProblemId= +(data)
    console.log(data)
-  //  this._router.navigateByUrl("");
+   if(data!=null){
+    this.Route.navigateByUrl("/Published");
+   }
+
 })
 }
 
@@ -158,7 +161,10 @@ this.data.append("Problem_id", this.UpdatedProblemId)
 this.ProblemServ.UpdateProblem(this.UpdatedProblemId,this.data).subscribe((data)=>{
 
  console.log(data)
-//  this._router.navigateByUrl("");
+ if(data==null){
+  this.Route.navigateByUrl("/Published");
+ }
+
 })
 
 }

@@ -24,4 +24,13 @@ export class SearchService {
   GetResultOfSearch(query:string, TechnicalId:any){
      return this.myClient.get(this.URL+"/1"+"?query="+query);
   }
+BlockTech(data:any){
+    return this.myClient.post("https://localhost:7273/api/Customer/BlockTechnical",data);
+ }
+
+ SendReview(data:any){
+
+  return this.myClient.post("https://localhost:7273/api/Customer/Review",data);
+ }
+
 }

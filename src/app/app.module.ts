@@ -53,6 +53,10 @@ import { SideBarService } from './Services/side-bar.service';
 import { BrowseAllJobsService } from './Services/browse-all-jobs.service';
 import { TechnicalProfileServicesService } from './Services/technical-profile-services.service';
 import { SectionService } from './Services/section.service';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { BeforeRegisterComponent } from './Components/before-register/before-register.component';
+import { ComplatedPublishComponent } from './Components/complated-publish/complated-publish.component';
+
 
 @NgModule({
   declarations: [
@@ -90,6 +94,8 @@ import { SectionService } from './Services/section.service';
     SuccsessPaymentComponent,
     TechnicalProfileComponent,
     UpdateTechnicalProfileComponent,
+    BeforeRegisterComponent,
+    ComplatedPublishComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,6 +114,8 @@ import { SectionService } from './Services/section.service';
     MatMenuModule,
     MatIconModule,
     MatChipsModule,
+
+
   ],
 
   providers: [

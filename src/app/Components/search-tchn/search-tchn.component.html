@@ -1,5 +1,12 @@
 <!-- //*ngIf="FilterResult.length>0 -->
-<div class="container bg-light p-2" >
+<div class="container bg-light p-2 mt-5" >
+   <!-- Spinner Start -->
+  <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+  </div> -->
+  <!-- Spinner End -->
   <div class="row" >
 
     <div class="col-md-3">
@@ -49,7 +56,11 @@
   <div class="card-body">
     <div class="d-flex align-items-center justify-content-between  ">
       <div class="d-flex align-items-center">
-      <img class="rounded-circle me-3" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+        <!-- display img -->
+        <!-- <img class="rounded-circle me-3" [src]="technican.photo!=null?'https://localhost:7273/{{technican.photo}}':'https://localhost:7273/avatar.jpg'" alt="" style="width: 40px; height: 40px;"> -->
+
+      <img *ngIf="technican.photo" class="rounded-circle me-3" src="https://localhost:7273/{{technican.photo}}" alt="" style="width: 40px; height: 40px;">
+      <img *ngIf="!technican.photo" class="rounded-circle me-3" src="https://localhost:7273/avatar.jpg" alt="" style="width: 40px; height: 40px;">
      <div>
       <h4 class="text-dark p-0 m-0"><span class="text-black me-3">{{technican.name}}</span>
 
@@ -75,12 +86,12 @@
           <button mat-menu-item>
 
 
-            <a routerLink="/details/{{technican}}">View Profile</a>
+            <a routerLink="/TechnicalProfile/{{technican.id}}">View Profile</a>
           </button>
 
           <button mat-menu-item>
 
-            <span  >Block Technican</span>
+            <span data-bs-toggle="modal" data-bs-target="#block"  (click)="sendId(technican.id)">Block Technican</span>
 
           </button>
         </mat-menu>
@@ -112,4 +123,29 @@
     </div>
   </div>
 
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="block" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      Are You Sure That You Want To Block This Technican?
+      </div>
+<div *ngIf="BlockedDone" class="alert alert-danger">
+  <p>Blocked successfully</p>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button *ngIf="!BlockedDone" type="button" class="btn btn-primary" (click)="blockTech()">Yes</button>
+      </div>
+    </div>
+  </div>
 </div>

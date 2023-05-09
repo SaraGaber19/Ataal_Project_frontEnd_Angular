@@ -23,15 +23,15 @@ ngOnInit(): void {
     ()=>{
   if(this.Auth.UserId.getValue()!=null){
 this.customerId=this.Auth.UserId.getValue();
+this.customer.getproblemsForCustomer(this.customerId).subscribe((data)=>{
+  console.log(data)
+  this.Problems=data
+  // this.date= this.Problems.date
 
+
+})
   }})
-  this.customer.getproblemsForCustomer(this.customerId).subscribe((data)=>{
-    console.log(data)
-    this.Problems=data
-    // this.date= this.Problems.date
 
-
-  })
 }
 sendrate(rate:number){
 this.rate=rate;
@@ -39,6 +39,7 @@ console.log(this.rate);
 }
 sendProblemId(Id:number){
 this.ProblemId=Id
+this.Deleted=false;
 
 console.log(Id)
 this.Current= this.Problems.find((u:Problem)=> u.id ==Id);
@@ -48,7 +49,7 @@ AssignAsSolved(){
   this.customer.AssignProblemAsSolved(this.ProblemId).subscribe((data)=>{console.log(data)})
   if(this.rate>0){
 const data={
-  "customerId": 2,
+  "customerId": this.customerId,
   "technicalId": this.Current.techId,
   "rateValue": this.rate
 }
@@ -57,21 +58,34 @@ const data={
 
   }
 }
+Deleted:boolean=false;
 
-
-
-getDate(date:any){
-  const Datee = new Date(date);
- return `${Datee.getDate()}/${Datee.getMonth()}/${Datee.getFullYear()}`;
-
-  // this.realyTime=Datee.getTime()
+Delete(){
+  this.Auth.DeleteProblem(this.ProblemId).subscribe((data)=>{
+    console.log(data)
+  })
 
 }
-getTime(date:any){
-  const Datee = new Date(date);
- return `${Datee.getHours()}:${Datee.getMinutes()}:${Datee.getSeconds()} ${Datee.getHours() >= 12 ? 'PM' : 'AM'}`
-  // this.realyTime=Datee.getTime()
+SendIdForDelete(id:number){
+this.ProblemId=id;
+this.Deleted=true;
+}
 
+
+
+getDate(dateString: string): string {
+  const NotificationDate = new Date(dateString);
+  const diffMs = new Date().getTime() - NotificationDate.getTime();
+  const diffMins = Math.round(diffMs / 60000); // convert to minutes
+  if (diffMins < 60) {
+    return `${diffMins} minute${diffMins === 1 ? '' : 's'} ago`;
+  } else if (diffMins < 1440) {
+    const diffHours = Math.floor(diffMins / 60);
+    return `${diffHours} hour${diffHours === 1 ? '' : 's'} ago`;
+  } else {
+    const diffDays = Math.floor(diffMins / 1440);
+    return `${diffDays} day${diffDays === 1 ? '' : 's'} ago`;
+  }
 }
 }
 

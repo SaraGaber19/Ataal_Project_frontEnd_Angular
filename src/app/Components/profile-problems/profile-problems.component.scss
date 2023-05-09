@@ -1,14 +1,34 @@
-.fa-hourglass-half{
-  color:rgb(202, 202, 33);
+.fa-clock{
+  color:yellow;
+}
+.cont{
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.modal-dialog {
+  top: 30% !important;
 }
 .design{
-  border: 2px solid rgb(202, 202, 33);
+  border: 1px solid rgb(156, 156, 154);
+  margin: 40px;
+
 }
 .design2{
-  border: 2px solid green;
+  border: 1px solid rgb(156, 156, 154);
+  margin: 40px;
+
 }
 .fa-circle-check{
   color: green;
+}
+.design3{
+  border: solid 1px #00b074;
+}
+.designTime{
+  background-color: #00b074;
+  padding: 3px 10px;
+  border-radius: 20px;
 }
 // #star5:hover,
 // #star5:hover  #star4,
