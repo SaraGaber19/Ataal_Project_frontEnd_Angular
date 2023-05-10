@@ -27,8 +27,10 @@ export class TechnicalProfileComponent {
     }
 
 
-    openModal(content:any) {
+    openModal(content:any,id:number) {
       this.modalService.open(content, { centered: true });
+      this.ReviewId=id
+      console.log(id)
     }
     message:string="";
     Technical:any;
@@ -53,14 +55,14 @@ export class TechnicalProfileComponent {
       console.log(this.MyTech);
       console.log(this.message);
       console.log(this.TechId);
-      
+
     }
     ngOnInit(): void {
 
 
       this.MyTech = this._router.snapshot.paramMap.get('id')||undefined;
-    
-    
+
+
 
 
 
@@ -79,8 +81,8 @@ export class TechnicalProfileComponent {
                   this.TechnicalId =this.Technical.id;
                   console.log("data");
                   console.log(this.Technical);
-      
-      
+
+
                   if(!this .Technical.rate){
                     for (let i = 0; i < 5; i++) {
                       this.RemainingStars [i] = i;
@@ -89,13 +91,13 @@ export class TechnicalProfileComponent {
                   for (let i = 0; i < this.Technical.rate; i++) {
                     this.Stars[i] = i;
                   }
-      
-      
+
+
                   for (let i = 0; i < 5-this.Stars.length; i++) {
                     this.RemainingStars [i] = i;
                   }
-      
-      
+
+
                 },
                 error: (err)=>{ console.log(err)}
               });
@@ -133,7 +135,7 @@ export class TechnicalProfileComponent {
               error: (err)=>{ console.log(err)}
             });
           }
-        
+
       }
     })
 
@@ -169,8 +171,16 @@ export class TechnicalProfileComponent {
 
       const cause = (<HTMLSelectElement>document.getElementById('causeSelect')).value;
       const description = (<HTMLInputElement>document.getElementById('descriptionTextarea')).value;
+// const data ={
 
-      this.reportService.reportReview(this.ReviewId, this.TechId, cause, description).subscribe(
+//     review_ID: this.ReviewId,
+//     technicalid: this.TechId,
+//     cause: cause,
+//     description: description,
+//     created_Date: Date.
+
+// }
+      this.reportService.reportReview(this.ReviewId,this.TechId,cause, description).subscribe(
 
         (response) => {
           console.log("Report the review successful");

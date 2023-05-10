@@ -77,7 +77,7 @@
         <button *ngIf="myProfile" class="btn btn-secondary rounded-3 m-1" routerLink="/UpdateTechnicalProfile">Update Profile</button>
         <button *ngIf="myProfile" class="btn btn-primary rounded-3 m-1">Profile Settings</button>
         <!-- Button trigger modal -->
-<button *ngIf="!myProfile" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Review">
+<button *ngIf="!myProfile" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#Review">
 Add Review
 </button>
 <button *ngIf="!myProfile"   class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#block"  >Block</button>
@@ -108,15 +108,16 @@ Add Review
   <div class="row border-bottom-0 ">
     <h4 class="rowTitle">Reviews</h4>
     <div class="review m-1" *ngFor="let review of Technical.reviews">
-      <div class="row">
-        <div class="col-1">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+        <div class=" ms-2">
 
 
-          <img *ngIf="review.customer_Info.photo !== ''"
-            [src]="'https://localhost:'+PortNumber+'/image/' + review.customer_Info.photo" alt="Customer Image"
-            class="img-fluid rounded-circle w-75">
-          <img *ngIf="review.customer_Info.photo === ''" src="assets/Images/nophoto.svg" alt="Customer Image"
-            class="img-fluid rounded-circle w-75">
+          <img *ngIf="review.customer_Info.photo !=null"
+            [src]="'https://localhost:'+PortNumber+'/' + review.customer_Info.photo" alt="Customer Image"
+            class="img-fluid rounded-circle " width="40px" height="40px">
+          <img *ngIf="review.customer_Info.photo === null" src= "https://localhost:7273/avatar.jpg" alt="Customer Image"
+            class="img-fluid rounded-circle " width="40px" height="40px">
 
         </div>
 
@@ -124,13 +125,13 @@ Add Review
                   <img src="assets/Images/nophoto.svg"  alt="Customer Image" class="img-fluid rounded-circle w-50">
               </div> -->
 
-        <div class="col-10">
-          <p class="fs-3 text-primary">{{review.customer_Info.name}}</p>
+        <div class="ms-2 mt-2">
+          <p class=" text-dark">{{review.customer_Info.name}}</p>
         </div>
-
+      </div>
         <div class="col-1">
 
-          <button *ngIf="myProfile" class="btn btn-danger" (click)="openModal(content)">
+          <button *ngIf="myProfile" class="btn btn-danger" (click)="openModal(content,review.id)">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
               <path
@@ -208,7 +209,7 @@ Add Review
         <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-center">
-    
+
         <input [(ngModel)]="message" type="text" class="form-control">
       </div>
       <div class="modal-footer">
@@ -218,7 +219,7 @@ Add Review
     </div>
   </div>
 </div>
- 
+
 
 <!-- Modal -->
 <div class="modal fade" id="block" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
