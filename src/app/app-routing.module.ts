@@ -28,6 +28,8 @@ import { TechnicalProfileComponent } from './Components/technical-profile/techni
 import { UpdateTechnicalProfileComponent } from './Components/update-technical-profile/update-technical-profile.component';
 import { BeforeRegisterComponent } from './Components/before-register/before-register.component';
 import { ComplatedPublishComponent } from './Components/complated-publish/complated-publish.component';
+import { AcceptedAndWaitingProblemsComponent } from './Components/accepted-and-waiting-problems/accepted-and-waiting-problems.component';
+
 const routes: Routes = [
 // {path:"",redirectTo:HomeComponent},
 {path:"",component:HomeComponent},
@@ -63,7 +65,7 @@ const routes: Routes = [
 {path:"TechnicalProfile/:id",component:TechnicalProfileComponent},
 {path:"TechnicalProfile",component:TechnicalProfileComponent},
 {path:"UpdateTechnicalProfile",component:UpdateTechnicalProfileComponent},
-{path:"FindJob",component:HomeTechnicalComponent},
+{path:"FindJob/:id",component:HomeTechnicalComponent},
 
 {path:"MyJob",component:MyJobsComponent},
 {path:"SideBar",component:SideBarComponent},
@@ -76,6 +78,7 @@ const routes: Routes = [
 
 {path:"succsess",component:SuccsessPaymentComponent},
 {path:"failed",component:FailedPaymentComponent},
+{path:"MyBox",component:AcceptedAndWaitingProblemsComponent},
 
 {path:"**",component: NotFoundComponent},
 

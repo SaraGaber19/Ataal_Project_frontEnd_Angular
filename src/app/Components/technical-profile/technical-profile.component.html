@@ -1,8 +1,7 @@
 <div class="container my-5 ">
   <div class="row firstRow">
     <div class="col-1">
-      <img [src]="'https://localhost:7273/' + Technical.photo" alt="Technical Image"
-        class="img-fluid rounded-circle">
+      <img [src]="'http://ataal.somee.com/' + Technical.photo" alt="Technical Image" class="img-fluid rounded-circle">
     </div>
     <div class="col-6">
       <div class="row">
@@ -74,13 +73,16 @@
     </div>
     <div class="col-5">
       <div class="d-flex w-75">
-        <button *ngIf="myProfile" class="btn btn-secondary rounded-3 m-1" routerLink="/UpdateTechnicalProfile">Update Profile</button>
+        <button *ngIf="myProfile" class="btn btn-secondary rounded-3 m-1" routerLink="/UpdateTechnicalProfile">Update
+          Profile</button>
         <button *ngIf="myProfile" class="btn btn-primary rounded-3 m-1">Profile Settings</button>
         <!-- Button trigger modal -->
-<button *ngIf="!myProfile" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#Review">
-Add Review
-</button>
-<button *ngIf="!myProfile"   class="btn btn-danger ms-3" data-bs-toggle="modal" data-bs-target="#block"  >Block</button>
+        <button *ngIf="!myProfile" type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+          data-bs-target="#Review">
+          Add Review
+        </button>
+        <button *ngIf="!myProfile" class="btn btn-danger ms-3" data-bs-toggle="modal"
+          data-bs-target="#block">Block</button>
       </div>
     </div>
   </div>
@@ -110,25 +112,25 @@ Add Review
     <div class="review m-1" *ngFor="let review of Technical.reviews">
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
-        <div class=" ms-2">
+          <div class=" ms-2">
 
 
-          <img *ngIf="review.customer_Info.photo !=null"
-            [src]="'https://localhost:'+PortNumber+'/' + review.customer_Info.photo" alt="Customer Image"
-            class="img-fluid rounded-circle " width="40px" height="40px">
-          <img *ngIf="review.customer_Info.photo === null" src= "https://localhost:7273/avatar.jpg" alt="Customer Image"
-            class="img-fluid rounded-circle " width="40px" height="40px">
+            <img *ngIf="review.customer_Info.photo !=null"
+              [src]="'https://localhost:'+PortNumber+'/' + review.customer_Info.photo" alt="Customer Image"
+              class="img-fluid rounded-circle " width="40px" height="40px">
+            <img *ngIf="review.customer_Info.photo === null" src="http://ataal.somee.com/avatar.jpg"
+              alt="Customer Image" class="img-fluid rounded-circle " width="40px" height="40px">
 
-        </div>
+          </div>
 
-        <!-- <div class="col-1" *ngif="review.customer_Info.photo === null">
+          <!-- <div class="col-1" *ngif="review.customer_Info.photo === null">
                   <img src="assets/Images/nophoto.svg"  alt="Customer Image" class="img-fluid rounded-circle w-50">
               </div> -->
 
-        <div class="ms-2 mt-2">
-          <p class=" text-dark">{{review.customer_Info.name}}</p>
+          <div class="ms-2 mt-2">
+            <p class=" text-dark">{{review.customer_Info.name}}</p>
+          </div>
         </div>
-      </div>
         <div class="col-1">
 
           <button *ngIf="myProfile" class="btn btn-danger" (click)="openModal(content,review.id)">
@@ -191,7 +193,7 @@ Add Review
     </form>
   </div>
   <div class="modal-footer">
-    <button data-bs-dismiss="modal" type="button" class="btn btn-success"  (click)="save()">Save</button>
+    <button data-bs-dismiss="modal" type="button" class="btn btn-success" (click)="save()">Save</button>
     <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
   </div>
 </ng-template>
@@ -206,7 +208,7 @@ Add Review
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">write review</h5>
-        <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-center">
 
@@ -230,11 +232,11 @@ Add Review
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      Are You Sure That You Want To Block This Technican?
+        Are You Sure That You Want To Block This Technican?
       </div>
-<div *ngIf="BlockedDone" class="alert alert-danger">
-  <p>Blocked successfully</p>
-</div>
+      <div *ngIf="BlockedDone" class="alert alert-danger">
+        <p>Blocked successfully</p>
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button *ngIf="!BlockedDone" type="button" class="btn btn-primary" (click)="blockTech()">Yes</button>

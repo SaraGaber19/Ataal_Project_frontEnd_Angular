@@ -10,7 +10,7 @@ export class ReportService {
 
   constructor(private myClient:HttpClient, private globalVar: GlobalVaribaleService) { }
 
-  URL = "https://localhost:"+this.globalVar.PortNumber+"/api/Report";
+  URL = "http://ataal.somee.com/api/Report";
 
   reportReview(reviewId: number, technicalId: number, cause: string, description: string): Observable<any> {
       const body = { review_ID: reviewId, technicalid: technicalId, cause: cause, description: description, created_Date: new Date() };

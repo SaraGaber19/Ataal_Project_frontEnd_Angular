@@ -1,4 +1,7 @@
+<ngx-spinner bdColor = "rgba(128, 128, 128, 0.7)" size = "medium" color = "#00b074" type = "ball-scale-multiple" [fullScreen] = "true"><p style="color: #00b074" > Loading... </p></ngx-spinner>
 <!-- Sidebar Start -->
+<!-- <ngx-spinner color="red" type="ball-scale-multiple"></ngx-spinner> -->
+
 <div class="sidebar  pb-3">
   <nav class=" ">
 
@@ -27,13 +30,13 @@
       <div class="  mt-5">
         <div class="align-items-center">
           <!-- //currentTechnician?.photo -->
-          <!-- https://localhost:7273/23185023-5d27-4937-a355-7e1808881e07.png -->
+          <!-- http://ataal.somee.com/23185023-5d27-4937-a355-7e1808881e07.png -->
 
 
 
-          <img class="rounded-circle" *ngIf="currentTechnician?.photo!=null; " src="https://localhost:7273/{{currentTechnician?.photo}}"  alt="{{currentTechnician?.name }}"style="width: 50px; height: 50px;"/>
+          <img class="rounded-circle" *ngIf="currentTechnician?.photo!=null; "src="http://ataal.somee.com/{{currentTechnician?.photo}}"  alt="{{currentTechnician?.name }}"style="width: 50px; height: 50px;"/>
          <!-- <ng-template #anotherPhoto> -->
-          <img *ngIf=" currentTechnician?.photo==null;" src="https://localhost:7273/avatar.jpg" alt="{{currentTechnician?.name }}" style="width: 50px; height: 50px;"/>
+          <img *ngIf=" currentTechnician?.photo==null;" src="http://ataal.somee.com/avatar.jpg" alt="{{currentTechnician?.name }}" style="width: 50px; height: 50px;"/>
         <!-- </ng-template> -->
         <h4 class="text-dark mt-3 mb-1">{{currentTechnician?.name}}</h4>
         <div>
@@ -81,7 +84,7 @@
   <div class="card-body">
     <div class="d-flex justify-content-between">
       <p class=" ms-0 DesignSince  "><i class="fa-solid fa-paper-plane icon"></i>participation : {{problem.custnumProblem}}</p>
-      <button class="bg-light p-1" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <button    *ngIf="problem.customerId!=CurrentPerson"   class="bg-light p-1" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -93,7 +96,7 @@
 
         <button mat-menu-item>
           <mat-icon>help</mat-icon>
-          <span (click)="sendProbId(problem.id)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">give Recommindition</span>
+        <button class="DsRec">  <span   (click)="sendProbId(problem.id)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">give Recommindition</span></button>
 
         </button>
       </mat-menu>
@@ -103,9 +106,9 @@
       <div class= " d-flex align-items-center">
         <!-- customerPhoto -->
 
-        <img class="rounded-circle me-3" *ngIf="problem?.customerPhoto!=null; else anotherPhoto" src="https://localhost:7273/{{problem?.customerPhoto}}"  alt="{{problem?.name }}"style="width: 40px; height: 40px;">
+        <img class="rounded-circle me-3" *ngIf="problem?.customerPhoto!=null; else anotherPhoto" src="http://ataal.somee.com/{{problem?.customerPhoto}}"  alt="{{problem?.name }}"style="width: 40px; height: 40px;">
         <ng-template #anotherPhoto>
-         <img class="rounded-circle me-3"  src="assets/img/user.jpg"  alt="{{currentTechnician?.name }}"style="width: 40px; height: 40px;">
+         <img class="rounded-circle me-3"  src="http://ataal.somee.com/avatar.jpg"  alt="{{currentTechnician?.name }}"style="width: 40px; height: 40px;">
        </ng-template>
 
      <div>

@@ -10,14 +10,14 @@ export class DetailedProlemService {
   constructor(private myClient:HttpClient,private globaLVar: GlobalVaribaleService) { }
 
     // URL = "https://localhost:44344/api/Technical/SideBarInfo";
-    URL1 = "https://localhost:"+this.globaLVar.PortNumber+"/api/Problem/Customer";
-    URL2 = "https://localhost:"+this.globaLVar.PortNumber+"/api/Customer/BlockCustomer";
-    URL3 = "https://localhost:"+this.globaLVar.PortNumber+"/api/Problem/";
-    URL4 = "https://localhost:"+this.globaLVar.PortNumber+"/api/Technical/GetPoints/";
-    URL5 = "https://localhost:"+this.globaLVar.PortNumber+"/api/Offer";                          //make offer
-    URL6 = "https://localhost:"+this.globaLVar.PortNumber+"/api/Offer/offer/";
-    URL7 = "https://localhost:"+this.globaLVar.PortNumber+"/api/Offer/";                          //delete
-    URL8 = "https://localhost:"+this.globaLVar.PortNumber+"/api/Technical/decrese/";                          //delete
+    URL1 = "http://ataal.somee.com/api/Problem/Customer";
+    URL2 = "http://ataal.somee.com/api/Customer/BlockCustomer";
+    URL3 = "http://ataal.somee.com/api/Problem/";
+    URL4 = "http://ataal.somee.com/api/Technical/GetPoints/";
+    URL5 = "http://ataal.somee.com/api/Offer";                          //make offer
+    URL6 = "http://ataal.somee.com/api/Offer/offer/";
+    URL7 = "http://ataal.somee.com/api/Offer/";                          //delete
+    URL8 = "http://ataal.somee.com/api/Technical/decrese/";                          //delete
 
 
     // getAllUsers(){

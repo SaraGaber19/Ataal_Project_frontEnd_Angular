@@ -11,7 +11,7 @@ import { CustomerService } from 'src/app/Services/Customer_Servides/customer.ser
 })
 export class UpdateProfileComponent implements OnInit {
   customer:any
-  imageURL:any='assets/img/user.jpg';
+  imageURL:any='http://ataal.somee.com/avater.jpg';
   customerId:number=0;
   data:FormData = new FormData()as FormData;
  Register:FormGroup=new FormGroup({
@@ -52,7 +52,7 @@ export class UpdateProfileComponent implements OnInit {
     this.Register.controls['Email'].setValue(this.customer.email);
 
     if(this.customer.photo!=null){
-    this.imageURL=`https://localhost:7273/${this.customer.photo}`
+    this.imageURL=`http://ataal.somee.com/${this.customer.photo}`
     }
   }
 

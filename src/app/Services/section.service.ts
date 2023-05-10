@@ -10,7 +10,7 @@ export class SectionService {
 
   constructor(private myClient:HttpClient, private globalVar: GlobalVaribaleService) { }
 
-  URL = "https://localhost:"+this.globalVar.PortNumber+"/api/Section/GetaAllSectionsNamesAndId";
+  URL = "http://ataal.somee.com/api/Section/GetaAllSectionsNamesAndId";
 
 
 
@@ -21,7 +21,7 @@ export class SectionService {
 
   GetAllSetions():Observable<any>
   {
-    return this.myClient.get("https://localhost:7273/api/Section/AllSectionWithoutDetails")
+    return this.myClient.get("http://ataal.somee.com/api/Section/AllSectionWithoutDetails")
   }
 
 

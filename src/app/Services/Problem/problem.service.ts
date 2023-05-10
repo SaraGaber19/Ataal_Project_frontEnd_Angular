@@ -9,38 +9,38 @@ export class ProblemService {
 
   constructor(private http:HttpClient) { }
   AddProblem(data:any){
-    return this.http.post("https://localhost:7273/api/Customer",data)
+    return this.http.post("http://ataal.somee.com/api/Customer",data)
  }
  GetAllSections():Observable<any>{
-  return this.http.get("https://localhost:7273/api/Section/AllSectionWithoutDetails")
+  return this.http.get("http://ataal.somee.com/api/Section/AllSectionWithoutDetails")
  }
  Payment(data:any){
-  return this.http.post("https://localhost:7273/api/Stripe/payment/add",data)
+  return this.http.post("http://ataal.somee.com/api/Stripe/payment/add",data)
  }
  getProblemById(problemId:number):Observable<any>{
-  return this.http.get(`https://localhost:7273/api/Problem/${problemId}`)
+  return this.http.get(`http://ataal.somee.com/api/Problem/${problemId}`)
  }
 
  getKeyWordsBySectionName(SectionId:number):Observable<any>{
-  return this.http.get(` https://localhost:7273/api/Keywords/GetAllKeyWordsBySectionId/${SectionId}`)
+  return this.http.get(` http://ataal.somee.com/api/Keywords/GetAllKeyWordsBySectionId/${SectionId}`)
 
 
 
  }
 
  getOfferById(OfferId:number):Observable<any>{
-  return this.http.get(`https://localhost:7273/api/Offer/offer/${OfferId}`)
+  return this.http.get(`http://ataal.somee.com/api/Offer/offer/${OfferId}`)
 
 
  }
  AcceptOffer(AcceptData:any):Observable<any>{
-  return this.http.post(`https://localhost:7273/api/Problem/CustomerAcceptOffer`,AcceptData)
+  return this.http.post(`http://ataal.somee.com/api/Problem/CustomerAcceptOffer`,AcceptData)
 
 
  }
 
  UpdateProblem(ProblemId:number,Data:any):Observable<any>{
-  return this.http.post(`https://localhost:7273/api/Customer/update_Problem/${ProblemId}`,Data)
+  return this.http.post(`http://ataal.somee.com/api/Customer/update_Problem/${ProblemId}`,Data)
 
 
  }

@@ -15,22 +15,22 @@ export class SectionService {
 
   getSideBarTechnical(SectionId:number):Observable<any>
   {
-    return this.http.get(`https://localhost:7273/api/Section/GetAllTechnicalsForCustomerSectionsSideBar/${SectionId}`)
+    return this.http.get(`http://ataal.somee.com/api/Section/GetAllTechnicalsForCustomerSectionsSideBar/${SectionId}`)
   }
 
 
   getSectionWithDetails(SectionId:number):Observable<any>
   {
-    return this.http.get(`https://localhost:7273/api/Section/GetSectionWithDetailsCustomerNeeds?id=${SectionId}`)
+    return this.http.get(`http://ataal.somee.com/api/Section/GetSectionWithDetailsCustomerNeeds?id=${SectionId}`)
   }
   getTechnicans(SectionId:number){
 
-    return this.http.get(`https://localhost:7273/api/Technical/GetAllTechnicalsForSectionId/${SectionId}`)
+    return this.http.get(`http://ataal.somee.com/api/Technical/GetAllTechnicalsForSectionId/${SectionId}`)
   }
 
  sendRecom(data:Recommenation):Observable<any>{
 
-    return this.http.post(`https://localhost:7273/api/Recommendation/AddingRecommendation`,data)
+    return this.http.post(`http://ataal.somee.com/api/Recommendation/AddingRecommendation`,data)
   }
 
 

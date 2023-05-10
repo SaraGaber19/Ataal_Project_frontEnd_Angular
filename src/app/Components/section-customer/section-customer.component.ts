@@ -5,7 +5,7 @@ import { interval, Observable, Subscription,EMPTY } from 'rxjs';
 import { repeat, take } from 'rxjs/operators';
 import { SectionService } from 'src/app/Services/Section_Custom_Serviices/section.service';
 import { AuthService } from 'src/app/Services/Auth_Services/auth.service';
-
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-section-customer',
@@ -29,17 +29,24 @@ export class SectionCustomerComponent implements OnDestroy ,OnInit {
   Id:any;
   private subscriptions: Subscription[] = [];
 
-  constructor(private SectionService: SectionService,private route: ActivatedRoute,private Auth:AuthService) { }
+  constructor(private SectionService: SectionService,private route: ActivatedRoute,private Auth:AuthService,private spinner:NgxSpinnerService) { }
   ngOnDestroy(): void {
 
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
 
   }
 
-
+CurrentPerson:number=0;
   ngOnInit(): void {
 
+    this.Auth.UserId.subscribe(() => {
+      if (
+        this.Auth.UserId.getValue() != null &&
+        this.Auth.userRole.getValue() == 'Customer'
+      ) {
+this.CurrentPerson=this.Auth.UserId.getValue();
 
+      }})
 
     this.route.paramMap.subscribe((params) => {
      if(this.Id !=params.get('id')){
@@ -95,12 +102,15 @@ console.log(this.techId)
   SendRecom(){
 console.log("sara")
     var data={
-      CustomerId:this.Auth.UserId,
+      CustomerId:this.CurrentPerson,
       ProblemId: this.probId,
       TechnicalId:this.techId,
       Date:new Date ()
     }
-    this. SectionService.sendRecom(data).subscribe((data)=>{console.log(data)})
+    this. SectionService.sendRecom(data).subscribe((data)=>{console.log(data)
+
+
+    })
   }
 getSectionTech(SecId:any){
 
@@ -108,10 +118,12 @@ getSectionTech(SecId:any){
 
   const rotationTimer$ = interval(3000);
 this.technicians$.subscribe((technicians: Technican[]) => {
+
  const sub=   rotationTimer$.pipe(
   take(technicians.length),
   repeat(),
 ).subscribe((i) => {
+  this.spinner.hide();
   this.currentTechnician = technicians[i % technicians.length];
 // console.log(this.currentTechnician.rate);
 this.rateNumber=this.currentTechnician.rate

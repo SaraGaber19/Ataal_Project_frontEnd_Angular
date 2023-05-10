@@ -11,7 +11,7 @@ export class SideBarService {
 
 
 
-  URL = "https://localhost:"+this.globalVar.PortNumber+"/api/Technical/SideBarInfo";
+  URL = "http://ataal.somee.com/api/Technical/SideBarInfo";
 
 
   //!Edit

@@ -57,10 +57,10 @@
     <div class="d-flex align-items-center justify-content-between  ">
       <div class="d-flex align-items-center">
         <!-- display img -->
-        <!-- <img class="rounded-circle me-3" [src]="technican.photo!=null?'https://localhost:7273/{{technican.photo}}':'https://localhost:7273/avatar.jpg'" alt="" style="width: 40px; height: 40px;"> -->
+        <!-- <img class="rounded-circle me-3" [src]="technican.photo!=null?'http://ataal.somee.com/{{technican.photo}}':'http://ataal.somee.com/avatar.jpg'" alt="" style="width: 40px; height: 40px;"> -->
 
-      <img *ngIf="technican.photo" class="rounded-circle me-3" src="https://localhost:7273/{{technican.photo}}" alt="" style="width: 40px; height: 40px;">
-      <img *ngIf="!technican.photo" class="rounded-circle me-3" src="https://localhost:7273/avatar.jpg" alt="" style="width: 40px; height: 40px;">
+      <img *ngIf="technican.photo" class="rounded-circle me-3" src="http://ataal.somee.com/{{technican.photo}}" alt="" style="width: 40px; height: 40px;">
+      <img *ngIf="!technican.photo" class="rounded-circle me-3" src="http://ataal.somee.com/avatar.jpg" alt="" style="width: 40px; height: 40px;">
      <div>
       <h4 class="text-dark p-0 m-0"><span class="text-black me-3">{{technican.name}}</span>
 

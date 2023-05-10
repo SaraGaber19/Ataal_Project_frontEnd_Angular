@@ -1,7 +1,7 @@
 <div *ngFor="let Technican of Technicans" class=" bg-light p-3 w-50 m-auto border mb-3 ">
   <div class="row justify-content-between">
   <div class="d-flex align-items-center ">
-    <img class="rounded-circle me-3" [src]="Technican.photo?'https://localhost:7273/{{Technican.photo}}':'https://localhost:7273/avatar.jpg'" alt="" style="width: 40px; height: 40px;">
+    <img class="rounded-circle me-3" [src]="Technican.photo?'http://ataal.somee.com/{{Technican.photo}}':'http://ataal.somee.com/avatar.jpg'" alt="" style="width: 40px; height: 40px;">
    <div> <h4 class="text-dark"> {{Technican.name}}</h4>
 
 

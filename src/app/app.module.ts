@@ -56,6 +56,8 @@ import { SectionService } from './Services/section.service';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { BeforeRegisterComponent } from './Components/before-register/before-register.component';
 import { ComplatedPublishComponent } from './Components/complated-publish/complated-publish.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { AcceptedAndWaitingProblemsComponent } from './Components/accepted-and-waiting-problems/accepted-and-waiting-problems.component';
 
 
 @NgModule({
@@ -96,6 +98,7 @@ import { ComplatedPublishComponent } from './Components/complated-publish/compla
     UpdateTechnicalProfileComponent,
     BeforeRegisterComponent,
     ComplatedPublishComponent,
+    AcceptedAndWaitingProblemsComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,7 +117,7 @@ import { ComplatedPublishComponent } from './Components/complated-publish/compla
     MatMenuModule,
     MatIconModule,
     MatChipsModule,
-
+    NgxSpinnerModule
 
   ],
 

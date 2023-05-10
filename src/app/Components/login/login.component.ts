@@ -34,7 +34,7 @@ if(this.Auth.userRole.getValue()=="Customer"){
    this._Router.navigateByUrl("/SectionCustomer/1");
 }
 else{
-   this._Router.navigateByUrl("/HomeTechnical");
+   this._Router.navigateByUrl("/FindJob/0");
 }
 
       }})

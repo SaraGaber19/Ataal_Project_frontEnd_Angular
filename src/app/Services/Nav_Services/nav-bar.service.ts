@@ -9,11 +9,11 @@ export class NavBarService {
 
 getNotificationNumber(customerId:number):Observable<any>
 {
-  return this.http.get(`https://localhost:7273/api/Customer/GetAllNotification/${customerId}`)
+  return this.http.get(`http://ataal.somee.com/api/Customer/GetAllNotification/${customerId}`)
 }
 getNotification(customerId:number):Observable<any>
 {
-  return this.http.get(`https://localhost:7273/api/Customer/GetAllNotificationData/${customerId}`)
+  return this.http.get(`http://ataal.somee.com/api/Customer/GetAllNotificationData/${customerId}`)
 }
 
 

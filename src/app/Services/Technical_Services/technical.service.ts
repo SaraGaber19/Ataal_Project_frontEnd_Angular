@@ -28,7 +28,7 @@ export class TechnicalService {
   // }
 getAllTechnicals(id:number):Observable<any>{
 
-    return this.http.get(`https://localhost:7273/api/Customer/GetAllTechnicansCustomerNeed/${id}`)
+    return this.http.get(`http://ataal.somee.com/api/Customer/GetAllTechnicansCustomerNeed/${id}`)
   }
 
 

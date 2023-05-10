@@ -32,7 +32,7 @@
         <div class="   row justify-content-between  align-items-center">
          <div class="d-flex col-md-5 my-3 justify-content-center">
             <h3 class="text-white  designTime me-2 mt-3">{{getDate(problem.date)}}</h3>
-          <h3 *ngIf="problem.key_Word" class="text-white me-2 designTime mt-3">{{getDate(problem.key_Word )}}</h3>
+          <h3 *ngIf="problem.key_Word" class="text-white me-2 designTime mt-3">{{problem.key_Word}}</h3>
           <h3  *ngIf="problem.isVIP"   class="text-white me-2 designTime mt-3">VIP</h3>
           <h3  *ngIf="problem.isSolved"   class="text-white me-2  designTime mt-3">Solved</h3>
 

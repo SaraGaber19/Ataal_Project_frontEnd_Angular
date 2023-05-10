@@ -9,21 +9,26 @@ export class BrowseAllJobsService {
 
   constructor(private myClient:HttpClient, private globaLVar : GlobalVaribaleService) { }
 
-  //!Edit Here
-  URL = "https://localhost:"+this.globaLVar.PortNumber+"/api/Problem";
+  URL = "http://ataal.somee.com/api/Problem";
+
   GetAllProblemsInfoBySectionId(sectionId:any,technicalId:any){
-     return this.myClient.get(this.URL+'/GetAllProblemsInfoForTechnical/'+sectionId+'/1');
+     return this.myClient.get(this.URL+'/GetAllProblemsInfoForTechnical/'+sectionId+'/'+technicalId);
   }
 
-//////////////////////////////////////edit
-  GetAllProblemsInfo(SectionId:any){
-    return this.myClient.get(this.URL+'/GetAllProblemsInfoForTechnical/'+`1`);
+// this for all problems when he press find jop he gain all prolem in all section he in
+// not blocked problems and not solved or assigned
+  GetAllProblemsInfo(technicalId:any){
+    return this.myClient.get(this.URL+'/GetAllProblemsInfoForTechnical/'+`${technicalId}`);
  }
 
 
    GetAllSsolvedProblems(TechnicalId:any){
       return this.myClient.get(this.URL+`/GetAllSolvedProblem/${TechnicalId}`)
 
+   }
+   GetAll_offerdProblems(TechnicalId:any){
+
+    return this.myClient.get(this.URL+`/GetAllofferdProblems/${TechnicalId}`)
    }
 
 }

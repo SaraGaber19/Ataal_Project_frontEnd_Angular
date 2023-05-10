@@ -20,17 +20,17 @@ export class SearchService {
 
   // https://localhost:44344/7?query=c
 
-  URL = "https://localhost:"+this.globalVar.PortNumber+"/api/Search";
+  URL = "http://ataal.somee.com/api/Search";
   GetResultOfSearch(query:string, TechnicalId:any){
      return this.myClient.get(this.URL+"/1"+"?query="+query);
   }
 BlockTech(data:any){
-    return this.myClient.post("https://localhost:7273/api/Customer/BlockTechnical",data);
+    return this.myClient.post("http://ataal.somee.com/api/Customer/BlockTechnical",data);
  }
 
  SendReview(data:any){
 
-  return this.myClient.post("https://localhost:7273/api/Customer/Review",data);
+  return this.myClient.post("http://ataal.somee.com/api/Customer/Review",data);
  }
 
 }

@@ -66,46 +66,46 @@ else{
   }
 
   gitCustomerByAppUser(id: string): Observable<any> {
-    return this.http.get(`https://localhost:7273/appuser/${id}`);
+    return this.http.get(`http://ataal.somee.com/appuser/${id}`);
   }
 
 
   getTechByAppUser(id:string): Observable<any> {
-    return this.http.get(`https://localhost:7273/Techappuser/${id}`);
+    return this.http.get(`http://ataal.somee.com/Techappuser/${id}`);
   }
 
 
   Sinup(RegisterData: RegisterInt): Observable<any> {
     return this.http.post(
-      'https://localhost:7273/api/Identity/CustomerRegister',
+      'http://ataal.somee.com/api/Identity/CustomerRegister',
       RegisterData
     );
   }
   SinIn(LoginData: LoginInt): Observable<any> {
     return this.http.post(
-      'https://localhost:7273/api/Identity/Login',
+      'http://ataal.somee.com/api/Identity/Login',
       LoginData
     );
   }
 
   SinupTechnicacan(RegisterData: RegisterInt): Observable<any> {
     return this.http.post(
-      'https://localhost:7273/api/Identity/TechnicalRegister',
+      'http://ataal.somee.com/api/Identity/TechnicalRegister',
       RegisterData
     );
   }
 
  AssignSections(RegisterData: any): Observable<any> {
     return this.http.post(
-      'https://localhost:7273/api/Technical/AddSectionstoTechnican',
+      'http://ataal.somee.com/api/Technical/AddSectionstoTechnican',
       RegisterData
     );
   }
 
   DeleteProblem(id:number): Observable<any> {
     return this.http.delete(
-     `https://localhost:7273/api/Customer?problemID=${id}`
-    
+     `http://ataal.somee.com/api/Customer?problemID=${id}`
+
     );
 
   }

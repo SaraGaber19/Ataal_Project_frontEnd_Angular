@@ -2,9 +2,9 @@
   <div class="container Design_Details Det2 py-3 w-50 mx-auto row  ">
     <div class="" >
       <div class="d-flex align-items-center  mt-3 ms-3  me-3">
-        <img alt="" class="rounded-circle me-lg-2" *ngIf="Problem.customerPhoto!=null " src="https://localhost:7273/{{Problem.customerPhoto}}"  style="width: 60px; height: 60px;">
+        <img alt="" class="rounded-circle me-lg-2" *ngIf="Problem.customerPhoto!=null " src="http://ataal.somee.com/{{Problem.customerPhoto}}"  style="width: 60px; height: 60px;">
         <ng-template #anotherPhoto>
-         <img alt="" class="rounded-circle me-lg-2" *ngIf="Problem.customerPhoto==null" src="https://localhost:7273/avatar.jpg" style="width: 60px; height: 60px;">
+         <img alt="" class="rounded-circle me-lg-2" *ngIf="Problem.customerPhoto==null" src="http://ataal.somee.com/avatar.jpg" style="width: 60px; height: 60px;">
        </ng-template>
        <div>
         <h3 class="text-dark my-0 ms-2">{{Problem.customerName}}</h3>
@@ -19,13 +19,13 @@
               <img src="assets/img/download.png" class="d-block w-100 h-100" alt="...">
             </div>
             <div class="carousel-item active  " *ngIf="Problem.photoPath1">
-              <img src="https://localhost:7273/{{Problem.photoPath1}}" class="d-block w-100 h-100" alt="...">
+              <img src="http://ataal.somee.com/{{Problem.photoPath1}}" class="d-block w-100 h-100" alt="...">
             </div>
             <div class="carousel-item" *ngIf="Problem.photoPath2">
-              <img src="https://localhost:7273/{{Problem.photoPath2}}" class="d-block w-100 h-100" alt="...">
+              <img src="http://ataal.somee.com/{{Problem.photoPath2}}" class="d-block w-100 h-100" alt="...">
             </div>
             <div class="carousel-item" *ngIf="Problem.photoPath3">
-              <img src="https://localhost:7273/{{Problem.photoPath3}}" class="d-block w-100 h-100" alt="...">
+              <img src="http://ataal.somee.com/{{Problem.photoPath3}}" class="d-block w-100 h-100" alt="...">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
