@@ -59,7 +59,7 @@ export class TechnicalProfileComponent {
     }
     ngOnInit(): void {
 
-
+      this.myProfile=false;
       this.MyTech = this._router.snapshot.paramMap.get('id')||undefined;
 
 

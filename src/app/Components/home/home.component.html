@@ -1,3 +1,5 @@
+<ngx-spinner bdColor = "rgba(128, 128, 128, 0.7)" size = "medium" color = "#00b074" type = "ball-scale-multiple" [fullScreen] = "true"><p style="color: #00b074" > Loading... </p></ngx-spinner>
+
 <div class="container-xxl bg-white p-0">
   <!-- Spinner Start -->
   <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -262,7 +264,7 @@
               <div class=" ps-3 ">
                 <h4 class="text-3">{{item.name}}</h4>
                 <p class="text-4">
-                  {{getwords(item.description)}}... <span class="seemore">See More</span>
+                  {{getwords(item.description)}}... <span data-bs-toggle="modal" data-bs-target="#SectionDetails" class="seemore secColor" (click)="sendData(item.id)">See More</span>
                 </p>
               </div>
             </div>
@@ -400,4 +402,33 @@
     </div>
   </div>
   <!-- Footer End -->
+
+
+  <!-- Modal -->
+<div class="modal fade" id="SectionDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h1 class="modal-title text-dark fs-5" id="exampleModalLabel" >Section Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <img src="http://ataal.somee.com/{{Section.photo}}">
+       <h2 class="m-0">Section Name :</h2><span>{{Section.name}}</span>
+       <h2 class="m-0">Dscription :</h2> <span>{{Section.description}}</span>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
 

@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { ProblemService } from 'src/app/Services//Problem/problem.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -10,17 +10,18 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailsComponent implements OnInit  {
   myParameter:any;
   Problem:any
-constructor(private problem:ProblemService,private route: ActivatedRoute){
+constructor(private problem:ProblemService,private route: ActivatedRoute,private spinner:NgxSpinnerService){
 
 }
 ngOnInit(): void {
 
-
+this.spinner.show()
   this.myParameter= this.route.snapshot.paramMap.get('id')
   console.log(this.myParameter)
 
   this.problem.getProblemById(this.myParameter).subscribe((data)=>{console.log(data)
   this.Problem=data
+  this.spinner.hide();
   })
 
 

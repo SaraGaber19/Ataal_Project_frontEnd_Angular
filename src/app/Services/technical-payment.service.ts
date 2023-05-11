@@ -41,7 +41,7 @@ export class MyService {
   constructor(private http: HttpClient, private globalVar: GlobalVaribaleService) {}
 
   postRequest(technicalPay : any) {
-    const url = 'https://localhost:'+this.globalVar.PortNumber+'/api/Stripe/Subscribe';
+    const url = 'http://ataal.somee.com/api/Stripe/Subscribe';
     return this.http.post(url, technicalPay);
   }
 }

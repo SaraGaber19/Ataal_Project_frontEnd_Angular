@@ -335,7 +335,16 @@ export class NavBarComponent implements OnInit {
           this.customerId = this.Auth.UserId.getValue();
         } else {
           this.Techn = this.Auth.UserId.getValue();
+          this.sectionservice.GetAllSetionsForTech( this.Techn ).subscribe({
+            next: (data) => {
+              this.AllSections2 = data;
+              console.log(data);
 
+            },
+            error: (err) => {
+              console.log(err);
+            },
+          });
           this.myservice.getTechnicalByID(this.Techn).subscribe({
             next: (data) => {
               this.Technical = data;
@@ -402,17 +411,10 @@ export class NavBarComponent implements OnInit {
     });
 
     ///////////////hossam//////////////////////////
-    this.sectionservice.GetAllSetionsNamesAndId().subscribe({
-      next: (data) => {
-        this.AllSections = data;
-        console.log(data);
-        console.log('hossammmmammmammammma ma ma smdasdmasd asmd ');
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+
+
   }
+  AllSections2 :any
   // SendId(id:number){
   //   // this._Router.navigate([`../SectionCustomer`,id])
   // //  this._Router.navigateByUrl(`/SectionCustomer/${id}`);

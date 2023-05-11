@@ -1,3 +1,4 @@
+<ngx-spinner bdColor = "rgba(128, 128, 128, 0.7)" size = "medium" color = "#00b074" type = "ball-scale-multiple" [fullScreen] = "true"><p style="color: #00b074" > Loading... </p></ngx-spinner>
 
 
 <div class="my-5  w-5  ">
@@ -94,6 +95,9 @@
 
 
     <button [disabled]="Register.invalid" class="btn btn-info" type="submit">Update</button>
+    <div *ngIf="updated" class="alert alert-success mt-3">
+      <p>updated</p>
+    </div>
 </form>
 
 </div>

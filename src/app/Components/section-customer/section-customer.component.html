@@ -83,7 +83,7 @@
 <div class="card  mx-3 my-3 ">
   <div class="card-body">
     <div class="d-flex justify-content-between">
-      <p class=" ms-0 DesignSince  "><i class="fa-solid fa-paper-plane icon"></i>participation : {{problem.custnumProblem}}</p>
+      <p class=" ms-0 DesignSince  "><i class="fa-solid fa-paper-plane icon"></i>participation : {{problem.custnumProblem+1}}</p>
       <button    *ngIf="problem.customerId!=CurrentPerson"   class="bg-light p-1" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -161,7 +161,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Your Recomindition</h1>
+        <h1 class="modal-title fs-5 text-dark" id="staticBackdropLabel">Your Recommendation</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -169,7 +169,7 @@
       <div class="dropdown">
        <div class="row justify-content-between ">
 <div class="col-md-6">
-<h5 class="text-dark">Your Recomindition Technical</h5>
+<h3 class="text-dark">Your Recommendation </h3>
 </div>
 <div class="col-md-5">
   <button class="btn btn-secondary dropdown-toggle me-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">

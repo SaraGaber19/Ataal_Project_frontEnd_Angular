@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/Auth_Services/auth.service';
 import { CustomerService } from 'src/app/Services/Customer_Servides/customer.service';
-
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
@@ -12,6 +12,7 @@ import { CustomerService } from 'src/app/Services/Customer_Servides/customer.ser
 export class UpdateProfileComponent implements OnInit {
   customer:any
   imageURL:any='http://ataal.somee.com/avater.jpg';
+  updated:boolean=false;
   customerId:number=0;
   data:FormData = new FormData()as FormData;
  Register:FormGroup=new FormGroup({
@@ -25,7 +26,7 @@ export class UpdateProfileComponent implements OnInit {
 
 });
   ngOnInit(): void {
-
+this.spinner.show()
     this.Auth.UserId.subscribe(
       ()=>{
     if(this.Auth.UserId.getValue()!=null){
@@ -34,6 +35,7 @@ export class UpdateProfileComponent implements OnInit {
     }})
   this.Customer.getCustomerById( this.customerId).subscribe((data)=>{console.log(data)
     this.customer=data
+    this.spinner.hide()
     this.initializeForm()
   }
   )
@@ -99,6 +101,9 @@ export class UpdateProfileComponent implements OnInit {
       this.data.append("userName",this.Register.value.userName)
 
       this.Customer.UpdateProfile(this.customerId,this.data).subscribe((data)=>{
+        if(data==null){
+          this.updated=true;
+        }
           console.log(data)
 })
       // this.Auth.Sinup(this,.Register.value).subscribe((data)=>{
@@ -108,5 +113,5 @@ export class UpdateProfileComponent implements OnInit {
     //   });
     //   console.log(this.Register.value)
    }
-    constructor(private Auth: AuthService, private _Router:Router,private Customer:CustomerService){}
+    constructor(private Auth: AuthService, private _Router:Router,private Customer:CustomerService,private spinner:NgxSpinnerService){}
 }

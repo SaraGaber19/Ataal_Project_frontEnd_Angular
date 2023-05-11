@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-12">
       <div *ngFor="let problem of SolvedProblems">
-        <div class="card mb-4 ms-5 clickable-div" routerLink="/detailedProblem"  >
+        <div class="card mb-4 ms-5 clickable-div" routerLink="/detailedProblem/{{problem.id}}"  >
           <div class="row">
             <div class="col-10">
 

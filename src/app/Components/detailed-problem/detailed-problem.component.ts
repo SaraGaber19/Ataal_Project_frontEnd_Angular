@@ -30,7 +30,8 @@ export class DetailedProblemComponent implements OnInit {
     private myroute: ActivatedRoute,
     private router: Router,
     private globalVar: GlobalVaribaleService,
-    private Auth: AuthService
+    private Auth: AuthService,
+    private spinner:NgxSpinnerService
   ) {}
 
 

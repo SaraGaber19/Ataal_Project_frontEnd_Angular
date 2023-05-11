@@ -17,6 +17,9 @@ h5{
 .img{
  height: 200px;
 }
+.modal-dialog {
+  top:20%
+}
 // .main-color{
 //   color: #f25454 !important;
 // }
@@ -93,18 +96,10 @@ opacity:0;
   padding: 13px 15px 10px 10px;
 }
 
+.secColor{
+  color:#00b074;
+}
 
-// .nav-link{
-//    margin: 0 10px;
-//    font-size: 14px;
-//    font-weight: 600;
-//    transition: all 0.5s;
-//    color: #fff;
-// }
-// .navbar-nav .nav-link {color: #fff;}
-// .nav-link:hover{
-// color: #f25454 !important;
-// }
 .nav-icon{
    color: #fff;
    padding: 10px 10px 0;
@@ -501,7 +496,7 @@ transition: all 1.2s;
 }
 .seemore{
 
-color: rgb(44,168,0);
+color: #00b074;
 }
 
 .carousel-caption {

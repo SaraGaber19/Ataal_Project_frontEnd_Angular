@@ -23,6 +23,10 @@ export class SectionService {
   {
     return this.myClient.get("http://ataal.somee.com/api/Section/AllSectionWithoutDetails")
   }
+  GetAllSetionsForTech(id:number):Observable<any>
+  {
+    return this.myClient.get(`http://ataal.somee.com/api/Section/GetaAllSectionsForTechnical/${id}`)
+  }
 
 
 }

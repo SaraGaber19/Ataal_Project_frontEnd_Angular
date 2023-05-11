@@ -38,7 +38,7 @@ export class SectionCustomerComponent implements OnDestroy ,OnInit {
 
 CurrentPerson:number=0;
   ngOnInit(): void {
-
+    this.spinner.show();
     this.Auth.UserId.subscribe(() => {
       if (
         this.Auth.UserId.getValue() != null &&
@@ -71,6 +71,7 @@ this.CurrentPerson=this.Auth.UserId.getValue();
         this.Section_Problems=data.sectionProblemReadDtos;
         console.log( this.Section_Problems=data.sectionProblemReadDtos)
         this.getSectionTech( this.Id )
+        this.spinner.hide();
       }
         )
 
@@ -123,7 +124,7 @@ this.technicians$.subscribe((technicians: Technican[]) => {
   take(technicians.length),
   repeat(),
 ).subscribe((i) => {
-  this.spinner.hide();
+
   this.currentTechnician = technicians[i % technicians.length];
 // console.log(this.currentTechnician.rate);
 this.rateNumber=this.currentTechnician.rate

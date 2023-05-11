@@ -1,3 +1,5 @@
+import { NgxSpinnerService } from "ngx-spinner";
+
 import { Component ,OnInit} from '@angular/core';
 import { CustomerService } from 'src/app/Services/Customer_Servides/customer.service';
 import { Problem } from 'src/app/Interfaces/problem';
@@ -16,9 +18,9 @@ ProblemId:number=0
 Current:any;
 rate:number=0;
 customerId:number=0;
-constructor(private customer :CustomerService,private Auth:AuthService){}
+constructor(private customer :CustomerService,private Auth:AuthService, private spinner:NgxSpinnerService){}
 ngOnInit(): void {
-
+this.spinner.show()
   this.Auth.UserId.subscribe(
     ()=>{
   if(this.Auth.UserId.getValue()!=null){
@@ -26,6 +28,7 @@ this.customerId=this.Auth.UserId.getValue();
 this.customer.getproblemsForCustomer(this.customerId).subscribe((data)=>{
   console.log(data)
   this.Problems=data
+  this.spinner.hide();
   // this.date= this.Problems.date
 
 
