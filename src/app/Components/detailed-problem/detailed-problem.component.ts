@@ -31,7 +31,7 @@ export class DetailedProblemComponent implements OnInit {
     private router: Router,
     private globalVar: GlobalVaribaleService,
     private Auth: AuthService,
-    private spinner:NgxSpinnerService
+
   ) {}
 
 
